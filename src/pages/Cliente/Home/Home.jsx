@@ -29,13 +29,13 @@ export default function Home(){
                 <SearcIcon src={IconSearch} onClick={()=>{console.log("Clicou!")}}></SearcIcon>
             </SearchBar>
             <ProductsContainer>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
+                <ProductCard text="Adicionar à sacola"/>
+                <ProductCard text="Adicionar à sacola"/>
+                <ProductCard text="Adicionar à sacola"/>
+                <ProductCard text="Adicionar à sacola"/>
+                <ProductCard text="Adicionar à sacola"/>
+                <ProductCard text="Adicionar à sacola"/>
+                <ProductCard text="Adicionar à sacola"/>
             </ProductsContainer>
         </HomeContainer>
     );

@@ -1,0 +1,1 @@
+export { default as InputLojaOn } from "./InputLojaOn";

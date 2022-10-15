@@ -4,7 +4,7 @@ export const HomeContainer = styled.div`
     display: flex;
     flex-direction:column;
     align-items: center;
-    margin: 11.111vw 0 13.889vw 0;
+    margin: 25vw 0 13.889vw 0;
 `;
 
 export const LojaIcon = styled.img`

@@ -1,6 +1,8 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import {Menu} from "./components/Menu/index"
+
 import {
   Home,
   Produto,
@@ -18,13 +20,16 @@ import {
 
 function App() {
   return (
+    <div>
+      <Menu/>
       <BrowserRouter>
         <Routes>
-            <Route index element={<FinalizarCompra/>} />
+            <Route index element={<Home/>} />
             <Route path="Home" element={<Home />} />
             <Route path="produto" element={<Produto />} />
         </Routes>
       </BrowserRouter>  
+    </div>
   );
 }
 

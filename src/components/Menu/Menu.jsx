@@ -11,7 +11,8 @@ import {
     SacolaContainer,
     SacolaBackground,
     SacolaText,
-    SacolaButton
+    SacolaButton,
+    ProdutoSacolaContainer
 } from "./styles";
 
 export default function Menu(){
@@ -26,7 +27,17 @@ export default function Menu(){
                 <>
                     <SacolaContainer>
                         <SacolaText>Sua sacola</SacolaText>
-                        <ProdutoSacola/>
+                        <ProdutoSacolaContainer>
+                            <ProdutoSacola/>
+                            <ProdutoSacola/>
+
+                            <ProdutoSacola/>
+                            <ProdutoSacola/>
+                            <ProdutoSacola/>
+                            <ProdutoSacola/>
+                            <ProdutoSacola/>
+
+                        </ProdutoSacolaContainer>
                         <SacolaButton>Finalizar compra</SacolaButton>
                     </SacolaContainer>
 

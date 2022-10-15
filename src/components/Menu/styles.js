@@ -61,3 +61,12 @@ export const SacolaButton = styled.button`
     border-radius: 1.389vw;
     cursor: pointer;
 `;
+
+export const ProdutoSacolaContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 60vh;
+    overflow: scroll;
+    margin-bottom: 2.778vw;
+`;

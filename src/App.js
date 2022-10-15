@@ -1,16 +1,26 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import {Home} from "./pages/Cliente/Home/index"
-import {Produto} from "./pages/Cliente/Produto/index"
-// import {Login} from "./pages/Lojista/Login/index"
-// import {CadastroUsuario} from "./pages/Lojista/CadastroUsuario/index"
-import {CadastroLoja} from "./pages/Lojista/CadastroLoja/index";
+
+import {
+  Home,
+  Produto,
+  FinalizarCompra
+} from "./pages/Cliente/index"
+
+import {
+  // SeusProdutos,
+  // Login,
+  // CadastroLoja,
+  // CadastroUsuario,
+  // Configuracoes,
+  // GerenciarProduto
+} from "./pages/Lojista/index"
 
 function App() {
   return (
       <BrowserRouter>
         <Routes>
-            <Route index element={<CadastroLoja/>} />
+            <Route index element={<FinalizarCompra/>} />
             <Route path="Home" element={<Home />} />
             <Route path="produto" element={<Produto />} />
         </Routes>

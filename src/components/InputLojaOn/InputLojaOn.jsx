@@ -5,10 +5,7 @@ import {
 } from "./styles";
 
 export default function InputLojaOn(params){
-
-    const {placeholder} = params;
-
     return(
-        <InputLO placeholder={placeholder}/>
+        <InputLO {...params}/>
     );
 }

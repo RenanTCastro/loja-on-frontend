@@ -11,7 +11,7 @@ import {
 
 import {
   // SeusProdutos,
-  // Login,
+  Login,
   // CadastroLoja,
   // CadastroUsuario,
   // Configuracoes,
@@ -25,7 +25,7 @@ function App() {
       <BrowserRouter>
         <Routes>
             <Route index element={<Home/>} />
-            <Route path="Home" element={<Home />} />
+            <Route path="login" element={<Login />} />
             <Route path="produto" element={<Produto />} />
         </Routes>
       </BrowserRouter>  

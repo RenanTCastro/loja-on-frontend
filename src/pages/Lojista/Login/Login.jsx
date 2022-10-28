@@ -12,7 +12,6 @@ import {
 
 import auth from "../../../services/auth";
 import api from "../../../services/api";
-import { redirect } from "react-router-dom";
 
 export default function Login(){
     const [userData, setUserData] = useState({});
@@ -25,7 +24,7 @@ export default function Login(){
         await api.post('/login', {email: "renan@gmail.com", password: "123"})
         .then((res)=>{
             auth.save(res.data);
-            redirect("/");
+            window.location="/produtos";
         })
         .catch((err)=>{
             console.log(err);

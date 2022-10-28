@@ -5,17 +5,18 @@ import {Menu} from "./components/Menu/index"
 
 import {
   Home,
-  Produto,
-  FinalizarCompra
+  // Produto,
+  // FinalizarCompra
 } from "./pages/Cliente/index"
 
 import {
-  // SeusProdutos,
+  SeusProdutos,
   Login,
+  CadastroUsuario,
   // CadastroLoja,
-  // CadastroUsuario,
   // Configuracoes,
-  // GerenciarProduto
+  AdicionarProduto,
+  GerenciarProduto
 } from "./pages/Lojista/index"
 
 function App() {
@@ -25,8 +26,11 @@ function App() {
       <BrowserRouter>
         <Routes>
             <Route index element={<Home/>} />
-            <Route path="login" element={<Login />} />
-            <Route path="produto" element={<Produto />} />
+            <Route path="login" element={<Login />}/>
+            <Route path="cadastro" element={<CadastroUsuario />} />
+            <Route path="produtos" element={<SeusProdutos />} />
+            <Route path="gerenciarproduto" element={<GerenciarProduto />} />
+            <Route path="adicionarproduto" element={<AdicionarProduto />} />
         </Routes>
       </BrowserRouter>  
     </div>

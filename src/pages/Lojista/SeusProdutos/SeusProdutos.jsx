@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 
 import IconSearch from "../../../assets/searchIcon.png"
@@ -14,8 +14,22 @@ import {
     Button,
     ProductsContainer
 } from "./styles";
+import api from "../../../services/api";
+import auth from "../../../services/auth";
 
 export default function SeusProdutos(){
+    const [productsData, setProductsData] = useState([]);
+    
+    useEffect(()=>{
+        api.get(`/getAllProducts/${auth.get().user_id}`)
+        .then((res)=>{
+            setProductsData(res.data);
+            console.log(res.data)
+        })
+        .catch((err)=>{
+            console.log("Erro ao buscar produtos", err)
+        })
+    },[])
     return(
         <SeusProdutosContainer>
             <SearchBar>
@@ -24,16 +38,14 @@ export default function SeusProdutos(){
             </SearchBar>
 
             <ButtonContainer>
-                <Button>Novo produto <img src={IconAdd} alt="icone de adicionar"/></Button>
+                <Button onClick={()=>window.location="/adicionarproduto"}>Novo produto <img src={IconAdd} alt="icone de adicionar"/></Button>
                 <Button>Compartilhar <img src={IconShare} alt="icone de compartilhar"/></Button>                
             </ButtonContainer>
 
             <ProductsContainer>
-                <ProductCard text="Editar"/>
-                <ProductCard text="Editar"/>
-                <ProductCard text="Editar"/>
-                <ProductCard text="Editar"/>
-                <ProductCard text="Editar"/>
+                {productsData.map((e)=>{
+                    return <ProductCard text="EDITAR" info={e}/>
+                })}
             </ProductsContainer>
         </SeusProdutosContainer>
     );

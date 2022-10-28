@@ -12,12 +12,18 @@ import {
 
 export default function ProductCard(params){
     const buttonText = params.text;
+
+    const handleClick = ()=>{
+        buttonText === 'EDITAR'
+        ? window.location = `/gerenciarproduto/?id=${params.info.product_id}` 
+        : console.log("add")
+    }
     return(
         <DivProductCard>
             <ImageProduct src={defaultProductImage} alt="Imagem do produto"/>
-            <ProductName>Cadeira de Madeira Wood Brasileira</ProductName>
-            <ProductPrice>R$ 37,99</ProductPrice>
-            <AddSacolaButton>{buttonText}</AddSacolaButton>
+            <ProductName>{params.info.name}</ProductName>
+            <ProductPrice>R$ {params.info.price}</ProductPrice>
+            <AddSacolaButton onClick={handleClick}>{buttonText}</AddSacolaButton>
         </DivProductCard>
     );
 }

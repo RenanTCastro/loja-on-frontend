@@ -27,6 +27,9 @@ export default function Menu(props){
 
     useEffect(()=>{
         switch(page){
+            case 'Cliente':
+                setIsCliente(true)
+            break;
             case 'Seus produtos':
                 setIsCliente(false)
             break;
@@ -46,7 +49,7 @@ export default function Menu(props){
     }
     return(
         <MenuContainer>
-            {!isCliente && <PageText>{props.page}</PageText>}
+            {!isCliente && <PageText>{props.text}</PageText>}
             {!hideIcon && <IconeSacola 
                 src={isCliente ? isOpen ? IconClose : IconSacola : IconSettings} 
                 onClick={handleClick}

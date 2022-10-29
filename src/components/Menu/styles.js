@@ -73,7 +73,7 @@ export const ProdutoSacolaContainer = styled.div`
 
 export const PageText = styled.p`
     position: absolute;
-    left: 25px;
+    left: 6.944vw;
     font-size: 3.889vw;
     font-weight: 600;
     color: #019392;

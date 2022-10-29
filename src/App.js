@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import {
   Home,
-  // Produto,
+  Produto,
   // FinalizarCompra
 } from "./pages/Cliente/index"
 
@@ -22,13 +22,18 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-            <Route index element={<Home/>} />
+            {/* Lojista routes */}
             <Route path="login" element={<Login />}/>
-            <Route path="cadastro" element={<CadastroUsuario />} />
-            <Route path="produtos" element={<SeusProdutos />} />
-            <Route path="gerenciarproduto" element={<GerenciarProduto />} />
-            <Route path="adicionarproduto" element={<AdicionarProduto />} />
-            <Route path="editarperfil" element={<Configuracoes />} />
+            <Route path="cadastro" element={<CadastroUsuario />}/>
+            <Route path="produtos" element={<SeusProdutos/>}/>
+            <Route path="adicionarproduto" element={<AdicionarProduto/>}/>
+            <Route path="gerenciarproduto" element={<GerenciarProduto/>}/>
+            <Route path="editarperfil" element={<Configuracoes/>}/>
+
+            {/* Cliente routes */}
+            <Route index element={<Home/>} />
+            <Route path="produto" element={<Produto/>}/>
+
         </Routes>
       </BrowserRouter>  
     </div>

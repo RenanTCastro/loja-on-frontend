@@ -6,6 +6,7 @@ import auth from "../../../services/auth";
 import Foto from "../../../assets/defaultProductImage.png"
 
 import { InputLojaOn, TextAreaLojaOn, ButtonLojaOn } from "../../../components/index";
+import {Menu} from "../../../components/index";
 
 import { 
     AdicionarProdutoContainer,
@@ -32,7 +33,7 @@ export default function AdicionarProduto(){
 
     return(
         <AdicionarProdutoContainer>
-
+            <Menu page="Configurações" text="Novo produto"/>
             <FotoProduto src={Foto}/>
             <AdicionarProdutoTexto>
                 Definir foto do produto

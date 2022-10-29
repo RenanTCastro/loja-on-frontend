@@ -34,7 +34,7 @@ export default function SeusProdutos(){
     },[])
     return(
         <SeusProdutosContainer>
-            <Menu page="Seus produtos"/>
+            <Menu page="Seus produtos" text="Seus produtos"/>
             <SearchBar>
                 <SearchInput/>
                 <SearcIcon src={IconSearch} onClick={()=>{console.log("Clicou!")}}></SearcIcon>

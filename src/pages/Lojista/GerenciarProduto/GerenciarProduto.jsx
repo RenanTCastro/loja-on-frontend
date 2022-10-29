@@ -6,6 +6,7 @@ import auth from "../../../services/auth";
 import Foto from "../../../assets/defaultProductImage.png"
 
 import { InputLojaOn, TextAreaLojaOn, ButtonLojaOn } from "../../../components/index";
+import {Menu} from "../../../components/index";
 
 import { 
     GerenciarProdutoContainer,
@@ -29,6 +30,7 @@ export default function GerenciarProduto(){
         })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
+    
     const handleInput = (e)=>{
         setProductData({...productData, [e.target.name] : e.target.value});
     }
@@ -55,7 +57,7 @@ export default function GerenciarProduto(){
 
     return(
         <GerenciarProdutoContainer>
-
+            <Menu page="Configurações" text="Editar Produto"/>
             <FotoProduto src={Foto}/>
             <GerenciarProdutoTexto>
                 Definir foto do produto

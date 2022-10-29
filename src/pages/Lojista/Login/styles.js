@@ -16,7 +16,7 @@ export const LogoImg = styled.img`
 export const Cadastre = styled.p`
     font-size: 3.889vw;
     text-align: center;
-    color: #019392;
+    color: ${props => props.theme.color};
     cursor: pointer;
     margin-top: 5.556vw;
 `;

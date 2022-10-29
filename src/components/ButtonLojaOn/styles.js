@@ -8,7 +8,7 @@ export const ButtonLO = styled.button`
     font-family: 'Montserrat', sans-serif,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;  text-align: center;
-    background: ${(props) => props.colorType === "confirmar" ? "#019392" : "#930101" } ;
+    background: ${props => props.theme.color};
     color: white;
     border: none;
     border-radius: 1.389vw;

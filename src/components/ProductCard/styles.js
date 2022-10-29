@@ -38,7 +38,7 @@ export const AddSacolaButton = styled.button`
   font-family: 'Montserrat', sans-serif,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;  text-align: center;
-  background: #019392;
+  background: ${props => props.theme.color};;
   padding: 0 2.778vw;
   color: white;
   border: none;

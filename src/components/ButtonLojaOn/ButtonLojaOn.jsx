@@ -5,9 +5,9 @@ import {
 } from "./styles";
 
 export default function ButtonLojaOn(params){
-    const {name, colorType = "confirmar", ...restParams} = params;
+    const {name, ...restParams} = params;
 
     return(
-        <ButtonLO colorType={colorType} {...restParams} >{name} </ButtonLO>
+        <ButtonLO {...restParams} >{name} </ButtonLO>
     );
 }

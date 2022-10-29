@@ -21,23 +21,27 @@ import auth from "../../../services/auth";
 
 export default function SeusProdutos(){
     const [productsData, setProductsData] = useState([]);
-    
+    const [filter, setFilter] = useState({name:""});
+
+    const handleInput = (e) =>{
+        setFilter({...filter, "name": e.target.value})
+    }
+
     useEffect(()=>{
-        api.get(`/getAllProducts/${auth.get().user_id}`)
+        api.get(`/getAllProducts/${auth.get().user_id}`, {filter:"dd"})
         .then((res)=>{
             setProductsData(res.data);
-            console.log(res.data)
         })
         .catch((err)=>{
             console.log("Erro ao buscar produtos", err)
         })
-    },[])
+    },[filter]);
+
     return(
         <SeusProdutosContainer>
             <Menu page="Seus produtos" text="Seus produtos"/>
             <SearchBar>
-                <SearchInput/>
-                <SearcIcon src={IconSearch} onClick={()=>{console.log("Clicou!")}}></SearcIcon>
+                <SearchInput placeholder="Pesquisar..." onChange={handleInput}/>
             </SearchBar>
 
             <ButtonContainer>

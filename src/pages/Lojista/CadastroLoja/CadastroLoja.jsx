@@ -14,11 +14,15 @@ import { ButtonLojaOn, InputLojaOn, TextAreaLojaOn } from "../../../components";
 
 export default function CadastroLoja(){
     const [userData, setUserData] = useState({});
+    const [themeColor, setThemeColor] = useState();
 
     const handleInput = (e)=>{
         setUserData({...userData, [e.target.name] : e.target.value})
     }
 
+    const handleColor = (e)=>{
+        setThemeColor(e.target.value);
+    }
     const handleSend = ()=>{
         const userCompleteData = {
             ...userData, 
@@ -47,7 +51,7 @@ export default function CadastroLoja(){
             <InputLojaOn placeholder="Nome da loja" name="name" onChange={handleInput}/>
             <InputLojaOn placeholder="Whatsapp para pedidos" name="whatsapp" onChange={handleInput}/>
             <TextAreaLojaOn placeholder="Bio" name="bio" onChange={handleInput}/>
-            <InputLojaOn type="color"/>
+            <InputLojaOn type="color" onChange={handleColor}/>
             <ButtonLojaOn onClick={handleSend} name="Finalizar"/>
             <ButtonLojaOn onClick={()=>window.location="/cadastro"} name="Voltar"/>
         </CadastroLojaContainer>

@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import Cookies from 'js-cookie'
 
 import Logo from "../../../assets/Logo.svg"
-import { InputLojaOn } from "../../../components";
+import { ButtonLojaOn, InputLojaOn } from "../../../components";
 
 import { 
     CadastroUsuarioContainer,
     LogoImg,
-    CadastroUsuarioInput,
-    CadastroUsuarioButton,
     Cadastre
 } from "./styles";
 
@@ -32,7 +30,7 @@ export default function CadastroUsuario(){
             <InputLojaOn placeholder="Email" type="email" name="email" onChange={handleInput}/>
             <InputLojaOn placeholder="Senha" type="password" name="password" onChange={handleInput}/>
             <InputLojaOn placeholder="Repetir senha" type="password" onChange={handleInput}/>
-            <CadastroUsuarioButton onClick={handleClick}>Próximo</CadastroUsuarioButton>
+            <ButtonLojaOn onClick={handleClick} name="Próximo"/>
             <Cadastre onClick={()=>window.location="/login"}>Já tem uma conta? Faça login</Cadastre>
         </CadastroUsuarioContainer>
     );

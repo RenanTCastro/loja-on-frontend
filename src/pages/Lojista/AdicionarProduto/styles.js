@@ -16,7 +16,7 @@ export const FotoProduto = styled.img`
 export const AdicionarProdutoTexto = styled.p`
     font-size: 4.444vw;
     font-weight: 400;
-    color: #019392;
+    color: ${props => props.theme.color};;
     text-align: center;
     margin: 5.556vw 0 5.556vw 0;
     cursor: pointer;

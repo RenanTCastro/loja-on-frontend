@@ -11,7 +11,7 @@ import {
   SeusProdutos,
   Login,
   CadastroUsuario,
-  // CadastroLoja,
+  CadastroLoja,
   Configuracoes,
   AdicionarProduto,
   GerenciarProduto
@@ -25,6 +25,7 @@ function App() {
             {/* Lojista routes */}
             <Route path="login" element={<Login />}/>
             <Route path="cadastro" element={<CadastroUsuario />}/>
+            <Route path="cadastrarloja" element={<CadastroLoja />}/>
             <Route path="produtos" element={<SeusProdutos/>}/>
             <Route path="adicionarproduto" element={<AdicionarProduto/>}/>
             <Route path="gerenciarproduto" element={<GerenciarProduto/>}/>

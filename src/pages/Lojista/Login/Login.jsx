@@ -37,7 +37,7 @@ export default function Login(){
             <InputLojaOn placeholder="Email" type="email" onChange={handleInput} name="email"/>
             <InputLojaOn placeholder="Senha" type="password" onChange={handleInput} name="password"/>
             <ButtonLojaOn name="Entrar" onClick={handleClick}/>
-            <Cadastre>Não tem uma conta? Cadastre-se</Cadastre>
+            <Cadastre onClick={()=>window.location="/cadastro"}>Não tem uma conta? Cadastre-se</Cadastre>
         </LoginContainer>
     );
 }

@@ -14,6 +14,7 @@ import Cookies from 'js-cookie'
   function clear() {
     Cookies.remove('token');
     Cookies.remove('user_id');
+    window.location = "login";
 }
 
 export default { save, clear, get };

@@ -70,3 +70,12 @@ export const ProdutoSacolaContainer = styled.div`
     overflow: scroll;
     margin-bottom: 2.778vw;
 `;
+
+export const PageText = styled.p`
+    position: absolute;
+    left: 25px;
+    font-size: 3.889vw;
+    font-weight: 600;
+    color: #019392;
+    margin-top: 5vw;
+`;

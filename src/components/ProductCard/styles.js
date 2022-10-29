@@ -39,7 +39,7 @@ export const AddSacolaButton = styled.button`
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;  text-align: center;
   background: #019392;
-  padding: 0 2.778vw ;
+  padding: 0 2.778vw;
   color: white;
   border: none;
   border-radius: 1.389vw;

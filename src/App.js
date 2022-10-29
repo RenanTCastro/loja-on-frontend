@@ -1,8 +1,6 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import {Menu} from "./components/Menu/index"
-
 import {
   Home,
   // Produto,
@@ -14,7 +12,7 @@ import {
   Login,
   CadastroUsuario,
   // CadastroLoja,
-  // Configuracoes,
+  Configuracoes,
   AdicionarProduto,
   GerenciarProduto
 } from "./pages/Lojista/index"
@@ -22,7 +20,6 @@ import {
 function App() {
   return (
     <div>
-      <Menu/>
       <BrowserRouter>
         <Routes>
             <Route index element={<Home/>} />
@@ -31,6 +28,7 @@ function App() {
             <Route path="produtos" element={<SeusProdutos />} />
             <Route path="gerenciarproduto" element={<GerenciarProduto />} />
             <Route path="adicionarproduto" element={<AdicionarProduto />} />
+            <Route path="editarperfil" element={<Configuracoes />} />
         </Routes>
       </BrowserRouter>  
     </div>

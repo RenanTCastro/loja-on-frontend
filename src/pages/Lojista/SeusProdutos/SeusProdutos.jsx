@@ -5,6 +5,8 @@ import IconSearch from "../../../assets/searchIcon.png"
 import IconAdd from "../../../assets/add.svg"
 import IconShare from "../../../assets/share.svg"
 
+import { Menu } from "../../../components";
+
 import { 
     SeusProdutosContainer,
     SearchBar,
@@ -32,6 +34,7 @@ export default function SeusProdutos(){
     },[])
     return(
         <SeusProdutosContainer>
+            <Menu page="Seus produtos"/>
             <SearchBar>
                 <SearchInput/>
                 <SearcIcon src={IconSearch} onClick={()=>{console.log("Clicou!")}}></SearcIcon>

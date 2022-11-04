@@ -2,8 +2,8 @@ import Cookies from 'js-cookie'
 
   function save({token, user_id, color}) {
     Cookies.set("token", token);
-    Cookies.set("user_id", user_id)
-    Cookies.set("color", color)
+    Cookies.set("user_id", user_id);
+    Cookies.set("color", color);
   }
 
   function get() {

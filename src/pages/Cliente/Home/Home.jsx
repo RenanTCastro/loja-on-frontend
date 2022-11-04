@@ -21,7 +21,8 @@ import {
 
 export default function Home(){
     const [productsData, setProductsData] = useState([]);
-    
+    const [userData, setUserData] = useState([]);
+
     useEffect(()=>{
         api.get(`/getAllProducts/${auth.get().user_id}`)
         .then((res)=>{
@@ -32,17 +33,23 @@ export default function Home(){
             console.log("Erro ao buscar produtos", err)
         })
     },[]);
+
+    useEffect(()=>{
+        api.get(`/lojainfo/${auth.get().user_id}`)
+        .then((res)=>{
+            setUserData(res.data);
+            console.log(res.data)
+        })
+        .catch((err)=>{
+            console.log("Erro ao buscar loja", err)
+        })
+    },[]);
     
     return(
         <HomeContainer>
             <Menu page="Cliente"/>
             <LojaIcon src={IconLoja}/>
-            <Bio>
-                Frete  grátis para todo Brasil ✈️
-                Os melhores produtos para a sua casa
-                Você só encontra aqui na House On
-                Compre já!
-            </Bio>
+            <Bio>{userData?.bio}</Bio>
             <SearchBar>
                 <SearchInput/>
                 <SearcIcon src={IconSearch} onClick={()=>{console.log("Clicou!")}}></SearcIcon>

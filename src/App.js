@@ -1,5 +1,6 @@
 import './App.css';
 import Cookies from 'js-cookie';
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { ThemeProvider } from 'styled-components';
@@ -24,7 +25,6 @@ function App() {
   const isAuthenticated = Cookies.get("token") ? true : false;
   const color = {color: !isAuthenticated ? '#019392' : Cookies.get("color")}
   
-  console.log(color)
   return (
     <ThemeProvider theme={color}>
       <BrowserRouter>

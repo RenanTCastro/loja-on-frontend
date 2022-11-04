@@ -20,9 +20,6 @@ export default function CadastroLoja(){
         setUserData({...userData, [e.target.name] : e.target.value})
     }
 
-    const handleColor = (e)=>{
-        setThemeColor(e.target.value);
-    }
     const handleSend = ()=>{
         const userCompleteData = {
             ...userData, 
@@ -30,7 +27,7 @@ export default function CadastroLoja(){
             "password": Cookies.get("password"),
             "url": "teste-url"
         }
-        
+        console.log(userCompleteData)
         api.post('/register', userCompleteData)
         .then(()=>{
             console.log("Conta criada");
@@ -51,7 +48,7 @@ export default function CadastroLoja(){
             <InputLojaOn placeholder="Nome da loja" name="name" onChange={handleInput}/>
             <InputLojaOn placeholder="Whatsapp para pedidos" name="whatsapp" onChange={handleInput}/>
             <TextAreaLojaOn placeholder="Bio" name="bio" onChange={handleInput}/>
-            <InputLojaOn type="color" onChange={handleColor}/>
+            <InputLojaOn type="color" name="color" onChange={handleInput} />
             <ButtonLojaOn onClick={handleSend} name="Finalizar"/>
             <ButtonLojaOn onClick={()=>window.location="/cadastro"} name="Voltar"/>
         </CadastroLojaContainer>

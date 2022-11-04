@@ -21,7 +21,7 @@ export default function Login(){
     }
 
     const handleClick = async ()=>{
-        await api.post('/login', {email: "renan@gmail.com", password: "123"})
+        await api.post('/login', userData)
         .then((res)=>{
             auth.save(res.data);
             window.location="/produtos";

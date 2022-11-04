@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import ImagemProduto from "../../../assets/defaultProductImage.png"
 import ApagarIcon from "../../../assets/close.svg"

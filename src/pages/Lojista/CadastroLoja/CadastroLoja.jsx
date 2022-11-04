@@ -7,14 +7,13 @@ import api from "../../../services/api";
 import { 
     CadastroLojaContainer,
     LogoImg,
-    CadastroLojaButton,
+    // CadastroLojaButton,
 } from "./styles";
 
 import { ButtonLojaOn, InputLojaOn, TextAreaLojaOn } from "../../../components";
 
 export default function CadastroLoja(){
     const [userData, setUserData] = useState({});
-    const [themeColor, setThemeColor] = useState();
 
     const handleInput = (e)=>{
         setUserData({...userData, [e.target.name] : e.target.value})

@@ -30,17 +30,17 @@ function App() {
       <BrowserRouter>
         <Routes>
             {/* Lojista routes */}
-            <Route path="login" element={<Login />}/>
-            <Route path="cadastro" element={<CadastroUsuario />}/>
-            <Route path="cadastrarloja" element={<CadastroLoja />}/>
-            <Route path="produtos" element={<SeusProdutos/>}/>
-            <Route path="adicionarproduto" element={<AdicionarProduto/>}/>
-            <Route path="gerenciarproduto" element={<GerenciarProduto/>}/>
-            <Route path="editarperfil" element={<Configuracoes/>}/>
+            <Route path="/login" element={<Login />}/>
+            <Route path="/cadastro" element={<CadastroUsuario />}/>
+            <Route path="/cadastrarloja" element={<CadastroLoja />}/>
+            <Route path="/produtos" element={<SeusProdutos/>}/>
+            <Route path="/adicionarproduto" element={<AdicionarProduto/>}/>
+            <Route path="/gerenciarproduto" element={<GerenciarProduto/>}/>
+            <Route path="/editarperfil" element={<Configuracoes/>}/>
 
             {/* Cliente routes */}
             <Route index element={<Home/>} />
-            <Route path="produto" element={<Produto/>}/>
+            <Route path="/produto" element={<Produto/>}/>
 
         </Routes>
       </BrowserRouter>  

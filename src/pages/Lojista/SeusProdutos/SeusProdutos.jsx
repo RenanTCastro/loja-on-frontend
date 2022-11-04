@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 
-import IconSearch from "../../../assets/searchIcon.png"
+// import IconSearch from "../../../assets/searchIcon.png"
 import IconAdd from "../../../assets/add.svg"
 import IconShare from "../../../assets/share.svg"
 
@@ -11,7 +11,7 @@ import {
     SeusProdutosContainer,
     SearchBar,
     SearchInput,
-    SearcIcon,
+    // SearcIcon,
     ButtonContainer,
     Button,
     ProductsContainer

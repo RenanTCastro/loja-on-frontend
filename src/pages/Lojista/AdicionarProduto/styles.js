@@ -1,7 +1,7 @@
 
 import styled from "styled-components/macro";
 
-export const GerenciarProdutoContainer = styled.div`
+export const AdicionarProdutoContainer = styled.div`
     display: flex;
     flex-direction:column;
     align-items: center;
@@ -13,7 +13,7 @@ export const FotoProduto = styled.img`
     height: 33.333vw;
 `;
 
-export const GerenciarProdutoTexto = styled.p`
+export const AdicionarProdutoTexto = styled.p`
     font-size: 4.444vw;
     font-weight: 400;
     color: ${props => props.theme.color};;

@@ -41,7 +41,7 @@ export const SacolaBackground = styled.div`
 export const SacolaText = styled.p`
     font-size: 3.889vw;
     font-weight: 600;
-    color: #019392;
+    color: ${props => props.theme.color};;
     text-align: start;
     margin-left: 8.333vw;
     margin-top: 5vw;
@@ -55,7 +55,7 @@ export const SacolaButton = styled.button`
     font-family: 'Montserrat', sans-serif,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;  text-align: center;
-    background: #019392;
+    background: ${props => props.theme.color};;
     color: white;
     border: none;
     border-radius: 1.389vw;
@@ -69,4 +69,13 @@ export const ProdutoSacolaContainer = styled.div`
     max-height: 60vh;
     overflow: scroll;
     margin-bottom: 2.778vw;
+`;
+
+export const PageText = styled.p`
+    position: absolute;
+    left: 6.944vw;
+    font-size: 3.889vw;
+    font-weight: 600;
+    color: ${props => props.theme.color};;
+    margin-top: 5vw;
 `;

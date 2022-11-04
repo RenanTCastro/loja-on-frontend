@@ -9,6 +9,6 @@ export default function TextAreaLojaOn(params){
     const {rows = 5, placeholder} = params;
 
     return(
-        <TextAreaLO placeholder = {placeholder} rows={rows}/>
+        <TextAreaLO placeholder = {placeholder} rows={rows} {...params}/>
     );
 }

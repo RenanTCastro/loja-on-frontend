@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import ImagemProduto from "../../../assets/ImagemProduto.png"
+
+import { Menu } from "../../../components";
 import ProductCard from "../../../components/ProductCard/ProductCard";
+
+import api from "../../../services/api";
+import auth from "../../../services/auth";
 
 import { 
     ProductContainer,
@@ -14,30 +19,46 @@ import {
 } from "./styles";
 
 export default function Home(){
+    const [productData, setProductData] = useState({});
+    const [othersProductsData, setOthersProductsData] = useState([]);
+
+    let product_id = window.location.search.substring(1).split('&')[0].split('=')[1];
+
+    useEffect(()=>{
+        api.get(`/getProduct/${product_id}`)
+        .then((res)=>{
+            setProductData(res.data[0]);
+        })
+        .catch((err)=>{
+            console.log("Erro ao buscar produto", err)
+        });
+
+        api.get(`/getOthersProducts/${auth.get().user_id}/${product_id}`)
+        .then((res)=>{
+            setOthersProductsData(res.data);
+            console.log(res.data)
+        })
+        .catch((err)=>{
+            console.log("Erro ao buscar produtos", err)
+        })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+
+
     return(
         <ProductContainer>
-            <ProductName>Cadeira de Madeira Wood Brasileira</ProductName>
-            <ProductPrice>R$ 37,90</ProductPrice>
+            <Menu page="Cliente"/>
+            <ProductName>{productData?.name}</ProductName>
+            <ProductPrice>R$ {productData?.price}</ProductPrice>
             <ProductImage src={ImagemProduto}/>
             <AddSacolaButton>Adicionar à sacola</AddSacolaButton>
-            <ProductDescription>    
-                As Cadeiras Brasileiras da Tadah! são a opção nacional para combinar com nossos móveis de madeira! A proposta? Muita cor, leveza e charme.
-                <br></br><br></br>
-                Vai bem na cozinha e  sala de jantar, mas fica uma beleza também no home office!
-                <br></br><br></br>
-                Ela é daquele tipo de design atemporal que vai por gerações!
-                <br></br><br></br>
-                Esta cadeira é feita de madeira de reflorestamento em sua estrutura, e mdf no assento, pintada com uma cor bem viva e laqueada! Coisa linda! 
-                <br></br><br></br>
-                Feita para ser usada em áreas internas. Deve-se evitar contato com água. Não recomendamos deixar exposta ao sol.
-            </ProductDescription>
+            <ProductDescription>{productData?.description}</ProductDescription>
 
             <ProductName>Outros produtos</ProductName>
             <OtherProducts>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
+                {othersProductsData.map((e)=>{
+                    return <ProductCard text="Adicionar à sacola" info={e}/>
+                })}
             </OtherProducts>
         </ProductContainer>
     );

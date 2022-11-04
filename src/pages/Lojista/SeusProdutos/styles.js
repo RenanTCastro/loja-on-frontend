@@ -4,7 +4,7 @@ export const SeusProdutosContainer = styled.div`
     display: flex;
     flex-direction:column;
     align-items: center;
-    margin: 11.111vw 0 13.889vw 0;
+    margin: 20.833vw 0 13.889vw 0;
 `;
 
 export const SearchBar = styled.div`
@@ -13,7 +13,7 @@ export const SearchBar = styled.div`
     width: 85vw;
     height: 10vw;
     border-radius: 1.389vw;
-    border: 0.278vw solid #019392;
+    border: 0.278vw solid ${props => props.theme.color};;
 `;
 
 export const SearchInput = styled.input`
@@ -55,7 +55,7 @@ export const Button = styled.button`
     font-family: 'Montserrat', sans-serif,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;  text-align: center;
-    background: #019392;
+    background: ${props => props.theme.color};;
     color: white;
     border: none;
     border-radius: 1.389vw;

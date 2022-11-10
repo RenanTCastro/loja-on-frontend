@@ -7,13 +7,25 @@ export const DivProductCard = styled.div`
   width: 33.333vw;
   min-height: 63.889vw; 
   padding: 2.778vw;
-  box-shadow: 0 0 1.111vw 0.278vw rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 1.111vw 0.278vw rgba(0, 0, 0, 0.08);
   border-radius: 1.389vw;
+  
+  @media (min-width: 800px) {
+    width: 14.641vw;
+    padding: 1.098vw;
+    min-height: 25.622vw; 
+    border-radius: 0.366vw;
+  }
 `;
 
 export const ImageProduct = styled.img`
   width: 33.333vw;
   height: 33.333vw;
+
+  @media (min-width: 800px) {
+    width: 14.641vw;
+    height: 14.641vw;
+  }
 `;
 
 export const ProductName = styled.p`
@@ -21,13 +33,23 @@ export const ProductName = styled.p`
   text-align: center;
   padding: 0 2.778vw ;
   margin: 1.389vw 0;
+
+  @media (min-width: 800px) {
+    font-size: 1.171vw;
+    margin: 0.732vw 0;
+  }
 `;
 
 export const ProductPrice = styled.p`
   font-size: 3.889vw;
   font-weight: 600;
   text-align: center;
-  margin: 1.389vw
+  margin: 1.389vw;
+
+  @media (min-width: 800px) {
+    font-size: 1.171vw;
+    margin: 0.732vw;
+  }
 `;
 
 export const AddSacolaButton = styled.button`
@@ -43,4 +65,12 @@ export const AddSacolaButton = styled.button`
   color: white;
   border: none;
   border-radius: 1.389vw;
+  cursor: pointer; 
+
+  @media (min-width: 800px) {
+    width: 14.641vw;
+    height: 2.928vw;
+    border-radius: 0.366vw;
+    font-size: 1.171vw;
+  }
 `;

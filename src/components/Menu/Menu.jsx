@@ -39,7 +39,8 @@ export default function Menu(props){
             break;
             default:
         }
-    },[page])
+    },[page]);
+
     const handleClick = () =>{
         if(isCliente){
             setIsOpen(!isOpen)
@@ -47,6 +48,7 @@ export default function Menu(props){
             window.location = "/editarperfil"
         }
     }
+
     return(
         <MenuContainer>
             {!isCliente && <PageText>{props.text}</PageText>}
@@ -61,13 +63,6 @@ export default function Menu(props){
                         <ProdutoSacolaContainer>
                             <ProdutoSacola/>
                             <ProdutoSacola/>
-
-                            <ProdutoSacola/>
-                            <ProdutoSacola/>
-                            <ProdutoSacola/>
-                            <ProdutoSacola/>
-                            <ProdutoSacola/>
-
                         </ProdutoSacolaContainer>
                         <SacolaButton>Finalizar compra</SacolaButton>
                     </SacolaContainer>

@@ -4,12 +4,13 @@ import Foto from "../../../assets/lojaIcon.png"
 
 import { InputLojaOn, TextAreaLojaOn, ButtonLojaOn } from "../../../components/index";
 import {Menu} from "../../../components/index";
-import auth from "../../../services/auth";
+import auth from "../../../utils/auth";
 import api from "../../../services/api";
 import { 
     ConfiguracoesContainer,
     ConfiguracoesTexto,
-    FotoProduto
+    FotoProduto,
+    ButtonContainer
 } from "./styles";
 
 export default function Configuracoes(){
@@ -50,16 +51,17 @@ export default function Configuracoes(){
                 Alterar foto de perfil
             </ConfiguracoesTexto>
             
-            <div style={{marginBottom: "2.778vw"}}>
-                <InputLojaOn placeholder="Nome da loja" name="name" value={userData?.name} onChange={handleInput}/>
-                <InputLojaOn placeholder="Whatsapp" name="whatsapp" value={userData?.whatsapp} onChange={handleInput}/>
-                <TextAreaLojaOn rows="5" placeholder="Descrição da loja" name="bio" value={userData?.bio} onChange={handleInput}/>
-                <InputLojaOn placeholder="Cor principal" name="color" value={userData?.color} onChange={handleInput}/>
-            </div>
+            <InputLojaOn placeholder="Nome da loja" name="name" value={userData?.name} onChange={handleInput}/>
+            <InputLojaOn placeholder="Whatsapp" name="whatsapp" value={userData?.whatsapp} onChange={handleInput}/>
+            <TextAreaLojaOn rows="5" placeholder="Descrição da loja" name="bio" value={userData?.bio} onChange={handleInput}/>
+            <InputLojaOn placeholder="Cor principal" name="color" value={userData?.color} onChange={handleInput}/>
             
-            <ButtonLojaOn name="Salvar alterações" colorType="confirmar" onClick={handleSave}/>
-            <ButtonLojaOn name="Voltar" onClick={()=>window.location = "/produtos"}/>
-            <ButtonLojaOn name="Sair da conta" colorType="apagar" onClick={()=>auth.clear()}/>
+            <ButtonContainer>
+                <ButtonLojaOn name="Salvar alterações" colorType="confirmar" onClick={handleSave}/>
+                <ButtonLojaOn name="Voltar" onClick={()=>window.location = "/produtos"}/>
+                <ButtonLojaOn name="Sair da conta" colorType="apagar" onClick={()=>auth.clear()}/>                
+            </ButtonContainer>
+
 
         </ConfiguracoesContainer>
     );

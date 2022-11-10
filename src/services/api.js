@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let dev = false;
+let dev = true;
 
 const api = axios.create({
   baseURL: dev ? "http://localhost:3001/" : "https://loja-on.herokuapp.com/",

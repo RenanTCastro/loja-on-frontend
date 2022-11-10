@@ -7,7 +7,7 @@ import api from "../../../services/api";
 import { 
     CadastroLojaContainer,
     LogoImg,
-    // CadastroLojaButton,
+    ButtonContainer
 } from "./styles";
 
 import { ButtonLojaOn, InputLojaOn, TextAreaLojaOn } from "../../../components";
@@ -48,8 +48,10 @@ export default function CadastroLoja(){
             <InputLojaOn placeholder="Whatsapp para pedidos" name="whatsapp" onChange={handleInput}/>
             <TextAreaLojaOn placeholder="Bio" name="bio" onChange={handleInput}/>
             <InputLojaOn type="color" name="color" onChange={handleInput} />
-            <ButtonLojaOn onClick={handleSend} name="Finalizar"/>
-            <ButtonLojaOn onClick={()=>window.location="/cadastro"} name="Voltar"/>
+            <ButtonContainer>
+                <ButtonLojaOn onClick={handleSend} name="Finalizar"/>
+                <ButtonLojaOn onClick={()=>window.location="/cadastro"} name="Voltar"/>
+            </ButtonContainer>
         </CadastroLojaContainer>
     );
 }

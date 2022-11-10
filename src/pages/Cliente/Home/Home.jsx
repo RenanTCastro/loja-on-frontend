@@ -7,7 +7,7 @@ import IconSearch from "../../../assets/searchIcon.png"
 import IconLoja from "../../../assets/lojaIcon.png"
 
 import api from "../../../services/api";
-import auth from "../../../services/auth";
+import auth from "../../../utils/auth";
 
 import { 
     HomeContainer,
@@ -51,7 +51,7 @@ export default function Home(){
             <LojaIcon src={IconLoja}/>
             <Bio>{userData?.bio}</Bio>
             <SearchBar>
-                <SearchInput/>
+                <SearchInput placeholder="Pesquisar..."/>
                 <SearcIcon src={IconSearch} onClick={()=>{console.log("Clicou!")}}></SearcIcon>
             </SearchBar>
             <ProductsContainer>

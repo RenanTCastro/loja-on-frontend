@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import api from "../../../services/api";
-import auth from "../../../services/auth";
+import auth from "../../../utils/auth";
 
 import Foto from "../../../assets/defaultProductImage.png"
 
@@ -11,7 +11,8 @@ import {Menu} from "../../../components/index";
 import { 
     GerenciarProdutoContainer,
     GerenciarProdutoTexto,
-    FotoProduto
+    FotoProduto,
+    ButtonContainer
 } from "./styles";
 
 export default function GerenciarProduto(){
@@ -63,16 +64,17 @@ export default function GerenciarProduto(){
                 Definir foto do produto
             </GerenciarProdutoTexto>
             
-            <div style={{marginBottom: "2.778vw"}}>
-                <InputLojaOn placeholder="Nome do produto" onChange={handleInput} name="name" value={productData?.name}/>
-                <InputLojaOn placeholder="Preço" type="number" onChange={handleInput} name="price" value={productData?.price}/>
-                <TextAreaLojaOn rows="5" placeholder="Descrição do produto" onChange={handleInput} name="description" value={productData?.description}/>
-                <InputLojaOn placeholder="Código do produto" onChange={handleInput} name="code" value={productData?.code}/>
-            </div>
-            
-            <ButtonLojaOn name="Salvar alterações" colorType="confirmar" onClick={handleSave}/>
-            <ButtonLojaOn name="Voltar" onClick={()=>window.location="/produtos"}/>
-            <ButtonLojaOn name="Apagar produto" colorType="apagar" onClick={handleDelete}/>
+            <InputLojaOn placeholder="Nome do produto" onChange={handleInput} name="name" value={productData?.name}/>
+            <InputLojaOn placeholder="Preço" type="number" onChange={handleInput} name="price" value={productData?.price}/>
+            <TextAreaLojaOn rows="5" placeholder="Descrição do produto" onChange={handleInput} name="description" value={productData?.description}/>
+            <InputLojaOn placeholder="Código do produto" onChange={handleInput} name="code" value={productData?.code}/>
+
+            <ButtonContainer>
+                <ButtonLojaOn name="Salvar alterações" colorType="confirmar" onClick={handleSave}/>
+                <ButtonLojaOn name="Voltar" onClick={()=>window.location="/produtos"}/>
+                <ButtonLojaOn name="Apagar produto" colorType="apagar" onClick={handleDelete}/>
+            </ButtonContainer>
+           
 
         </GerenciarProdutoContainer>
     );

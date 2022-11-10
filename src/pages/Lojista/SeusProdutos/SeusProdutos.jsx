@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 
-// import IconSearch from "../../../assets/searchIcon.png"
 import IconAdd from "../../../assets/add.svg"
 import IconShare from "../../../assets/share.svg"
 
@@ -9,15 +8,14 @@ import { Menu } from "../../../components";
 
 import { 
     SeusProdutosContainer,
-    SearchBar,
     SearchInput,
-    // SearcIcon,
+    SearchAndButtonContainer,
     ButtonContainer,
     Button,
     ProductsContainer
 } from "./styles";
 import api from "../../../services/api";
-import auth from "../../../services/auth";
+import auth from "../../../utils/auth";
 
 export default function SeusProdutos(){
     const [productsData, setProductsData] = useState([]);
@@ -40,14 +38,14 @@ export default function SeusProdutos(){
     return(
         <SeusProdutosContainer>
             <Menu page="Seus produtos" text="Seus produtos"/>
-            <SearchBar>
+            
+            <SearchAndButtonContainer>
                 <SearchInput placeholder="Pesquisar..." onChange={handleInput}/>
-            </SearchBar>
-
-            <ButtonContainer>
-                <Button onClick={()=>window.location="/adicionarproduto"}>Novo produto <img src={IconAdd} alt="icone de adicionar"/></Button>
-                <Button>Compartilhar <img src={IconShare} alt="icone de compartilhar"/></Button>                
-            </ButtonContainer>
+                <ButtonContainer>
+                    <Button onClick={()=>window.location="/adicionarproduto"}>Novo produto <img src={IconAdd} alt="icone de adicionar"/></Button>
+                    <Button>Compartilhar <img src={IconShare} alt="icone de compartilhar"/></Button>                
+                </ButtonContainer>
+            </SearchAndButtonContainer>
 
             <ProductsContainer>
                 {productsData.map((e)=>{

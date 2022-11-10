@@ -18,18 +18,22 @@ export default function CadastroUsuario(){
     }
 
     const handleClick = () =>{
-        // Verificar se senhas coincidem e se e-mail é válido
-        Cookies.set("email", userData.email)
-        Cookies.set("password", userData.password)
-        window.location="/cadastrarloja"
+        const pass = document.getElementById("pass").value;
+        const repeatPass = document.getElementById("repeatpass").value;
+        
+        if(pass === repeatPass){
+            Cookies.set("email", userData.email);
+            Cookies.set("password", userData.password);
+            window.location="/cadastrarloja";
+        }
     }
     
     return(
         <CadastroUsuarioContainer>
             <LogoImg src={Logo}/>
             <InputLojaOn placeholder="Email" type="email" name="email" onChange={handleInput}/>
-            <InputLojaOn placeholder="Senha" type="password" name="password" onChange={handleInput}/>
-            <InputLojaOn placeholder="Repetir senha" type="password" onChange={handleInput}/>
+            <InputLojaOn id="pass" placeholder="Senha" type="password" name="password" onChange={handleInput}/>
+            <InputLojaOn id="repeatpass" placeholder="Repetir senha" type="password" onChange={handleInput}/>
             <ButtonLojaOn onClick={handleClick} name="Próximo"/>
             <Cadastre onClick={()=>window.location="/login"}>Já tem uma conta? Faça login</Cadastre>
         </CadastroUsuarioContainer>

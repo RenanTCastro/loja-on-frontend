@@ -24,6 +24,8 @@ export default function ProductCard(params){
         ? console.log()
         : window.location = `/produto/?id=${params.info.product_id}` 
     }
+
+    console.log(window.screen)
     return(
         <DivProductCard>
             <ImageProduct src={defaultProductImage} alt="Imagem do produto" onClick={handleClickProduct}/>

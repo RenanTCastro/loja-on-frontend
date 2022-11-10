@@ -10,7 +10,7 @@ import {
     Cadastre
 } from "./styles";
 
-import auth from "../../../services/auth";
+import auth from "../../../utils/auth";
 import api from "../../../services/api";
 
 export default function Login(){

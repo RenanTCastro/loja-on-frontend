@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import api from "../../../services/api";
-import auth from "../../../services/auth";
+import auth from "../../../utils/auth";
 
 import Foto from "../../../assets/defaultProductImage.png"
 
@@ -11,7 +11,8 @@ import {Menu} from "../../../components/index";
 import { 
     AdicionarProdutoContainer,
     AdicionarProdutoTexto,
-    FotoProduto
+    FotoProduto,
+    ButtonContainer
 } from "./styles";
 
 export default function AdicionarProduto(){
@@ -39,15 +40,15 @@ export default function AdicionarProduto(){
                 Definir foto do produto
             </AdicionarProdutoTexto>
             
-            <div style={{marginBottom: "2.778vw"}}>
-                <InputLojaOn placeholder="Nome do produto" onChange={handleInput} name="name"/>
-                <InputLojaOn placeholder="Preço" type="number" onChange={handleInput} name="price"/>
-                <TextAreaLojaOn rows="5" placeholder="Descrição do produto" onChange={handleInput} name="description"/>
-                <InputLojaOn placeholder="Código do produto" onChange={handleInput} name="code"/>
-            </div>
+            <InputLojaOn placeholder="Nome do produto" onChange={handleInput} name="name"/>
+            <InputLojaOn placeholder="Preço" type="number" onChange={handleInput} name="price"/>
+            <TextAreaLojaOn rows="5" placeholder="Descrição do produto" onChange={handleInput} name="description"/>
+            <InputLojaOn placeholder="Código do produto" onChange={handleInput} name="code"/>
             
-            <ButtonLojaOn name="Salvar alterações" colorType="confirmar" onClick={handleSave}/>
-            <ButtonLojaOn name="Voltar" onClick={()=>window.location="/produtos"}/>
+            <ButtonContainer>
+                <ButtonLojaOn name="Salvar alterações" colorType="confirmar" onClick={handleSave}/>
+                <ButtonLojaOn name="Voltar" onClick={()=>window.location="/produtos"}/>
+            </ButtonContainer>
 
         </AdicionarProdutoContainer>
     );

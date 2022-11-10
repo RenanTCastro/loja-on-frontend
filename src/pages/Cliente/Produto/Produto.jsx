@@ -6,7 +6,7 @@ import { Menu } from "../../../components";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 
 import api from "../../../services/api";
-import auth from "../../../services/auth";
+import auth from "../../../utils/auth";
 
 import { 
     ProductContainer,

@@ -7,9 +7,13 @@ export const MenuContainer = styled.div`
     width: 100vw;
     height: 13.889vw;
     background: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
     position: fixed;
     top: 0;
+
+    @media (min-width: 800px) {
+        height: 5.857vw;
+    }
 `;
 
 export const IconeSacola = styled.img`
@@ -17,6 +21,11 @@ export const IconeSacola = styled.img`
     height: 6.944vw;
     margin-right: 8.333vw;
     z-index: 2;
+
+    @media (min-width: 800px) {
+        width: 3.660vw;
+        height: 3.660vw;
+    }
 `;
 
 export const SacolaContainer = styled.div`
@@ -25,7 +34,7 @@ export const SacolaContainer = styled.div`
     height: 100vh;
     top: 0;
     background: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
     z-index: 1;
     text-align: center;
 `;
@@ -78,4 +87,9 @@ export const PageText = styled.p`
     font-weight: 600;
     color: ${props => props.theme.color};;
     margin-top: 5vw;
+
+    @media (min-width: 800px) {
+        font-size: 1.464vw;
+        margin: 0;
+    }
 `;

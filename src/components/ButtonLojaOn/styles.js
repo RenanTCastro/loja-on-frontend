@@ -14,4 +14,12 @@ export const ButtonLO = styled.button`
     border-radius: 1.389vw;
     cursor: pointer;
     margin-bottom: 4.167vw;
+
+    @media (min-width: 800px) {
+        width: 29.283vw;
+        height: 3.660vw;
+        border-radius: 0.366vw;
+        font-size: 1.171vw;
+        margin-bottom: 0;
+    }
 `;

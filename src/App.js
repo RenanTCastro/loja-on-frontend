@@ -23,7 +23,7 @@ import {
 
 function App() {
   const isAuthenticated = Cookies.get("token") ? true : false;
-  const color = {color: !isAuthenticated ? '#019392' : Cookies.get("color")}
+  const color = {color: !isAuthenticated ? '#659BEE' : Cookies.get("color")}
   
   return (
     <ThemeProvider theme={color}>

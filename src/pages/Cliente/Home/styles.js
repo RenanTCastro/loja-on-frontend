@@ -4,9 +4,9 @@ export const HomeContainer = styled.div`
     display: flex;
     flex-direction:column;
     align-items: center;
-    margin: 25vw 0 13.889vw 0;
+    margin: 20vw 0 13.889vw 0;
     @media (min-width: 800px) {
-        margin: 25vh 0 20vh 0;
+        margin: 20vh 0 20vh 0;
     }
 `;
 

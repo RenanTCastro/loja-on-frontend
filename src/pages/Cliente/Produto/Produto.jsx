@@ -39,7 +39,6 @@ export default function Home(){
         api.get(`/getOthersProducts/${auth.get().user_id}/${product_id}`)
         .then((res)=>{
             setOthersProductsData(res.data);
-            console.log(res.data)
         })
         .catch((err)=>{
             console.log("Erro ao buscar produtos", err)
@@ -50,7 +49,7 @@ export default function Home(){
 
     return(
         <ProductContainer>
-            <Menu page="Cliente"/>
+            <Menu page="Product"/>
 
             <ProductInfoContainer>
                 <div>

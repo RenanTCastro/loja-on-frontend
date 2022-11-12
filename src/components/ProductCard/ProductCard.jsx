@@ -25,7 +25,6 @@ export default function ProductCard(params){
         : window.location = `/produto/?id=${params.info.product_id}` 
     }
 
-    console.log(window.screen)
     return(
         <DivProductCard>
             <div>

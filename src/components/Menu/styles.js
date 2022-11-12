@@ -12,19 +12,19 @@ export const MenuContainer = styled.div`
     top: 0;
 
     @media (min-width: 800px) {
-        height: 5.857vw;
+        height: 5vw;
     }
 `;
 
-export const IconeSacola = styled.img`
+export const Icones = styled.div`
     width: 6.944vw;
     height: 6.944vw;
     margin-right: 8.333vw;
     z-index: 2;
 
     @media (min-width: 800px) {
-        width: 3.660vw;
-        height: 3.660vw;
+        width: 2.5vw;
+        height: 2.5vw;
     }
 `;
 
@@ -50,7 +50,7 @@ export const SacolaBackground = styled.div`
 export const SacolaText = styled.p`
     font-size: 3.889vw;
     font-weight: 600;
-    color: ${props => props.theme.color};;
+    color: ${props => props.theme.color};
     text-align: start;
     margin-left: 8.333vw;
     margin-top: 5vw;

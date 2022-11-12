@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Menu } from "../../../components";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 
-import IconSearch from "../../../assets/searchIcon.png"
 import IconLoja from "../../../assets/lojaIcon.png"
 
 import api from "../../../services/api";
@@ -13,32 +12,33 @@ import {
     HomeContainer,
     LojaIcon,
     Bio,
-    SearchBar,
     SearchInput,
-    SearcIcon,
     ProductsContainer
 } from "./styles";
 
 export default function Home(){
     const [productsData, setProductsData] = useState([]);
     const [userData, setUserData] = useState([]);
+    const [filter, setFilter] = useState({filter:""});
+
+    const handleInput = (e) =>{
+        setFilter({...filter, "filter": e.target.value})
+    }
 
     useEffect(()=>{
-        api.get(`/getAllProducts/${auth.get().user_id}`)
+        api.post(`/getAllProducts/${auth.get().user_id}`, filter)
         .then((res)=>{
             setProductsData(res.data);
-            console.log(res.data)
         })
         .catch((err)=>{
             console.log("Erro ao buscar produtos", err)
         })
-    },[]);
+    },[filter]);
 
     useEffect(()=>{
         api.get(`/lojainfo/${auth.get().user_id}`)
         .then((res)=>{
             setUserData(res.data);
-            console.log(res.data)
         })
         .catch((err)=>{
             console.log("Erro ao buscar loja", err)
@@ -50,10 +50,7 @@ export default function Home(){
             <Menu page="Cliente"/>
             <LojaIcon src={IconLoja}/>
             <Bio>{userData?.bio}</Bio>
-            <SearchBar>
-                <SearchInput placeholder="Pesquisar..."/>
-                <SearcIcon src={IconSearch} onClick={()=>{console.log("Clicou!")}}></SearcIcon>
-            </SearchBar>
+            <SearchInput placeholder="Pesquisar..." onChange={handleInput}/>
             <ProductsContainer>
                 {productsData.map((e)=>{
                     return <ProductCard text="Adicionar à sacola" info={e}/>

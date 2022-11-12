@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import ImagemProduto from "../../../assets/ImagemProduto.png"
+// import ImagemProduto from "../../../assets/ImagemProduto.png"
+import ImagemProduto from "../../../assets/m.png"
 
 import { Menu } from "../../../components";
 import ProductCard from "../../../components/ProductCard/ProductCard";
@@ -10,11 +11,13 @@ import auth from "../../../utils/auth";
 
 import { 
     ProductContainer,
+    ProductInfoContainer,
     ProductName,
     ProductPrice,
     ProductImage,
     AddSacolaButton,
     ProductDescription,
+    OtherProductsLabel,
     OtherProducts
 } from "./styles";
 
@@ -48,13 +51,32 @@ export default function Home(){
     return(
         <ProductContainer>
             <Menu page="Cliente"/>
-            <ProductName>{productData?.name}</ProductName>
-            <ProductPrice>R$ {productData?.price}</ProductPrice>
-            <ProductImage src={ImagemProduto}/>
-            <AddSacolaButton>Adicionar à sacola</AddSacolaButton>
-            <ProductDescription>{productData?.description}</ProductDescription>
 
-            <ProductName>Outros produtos</ProductName>
+            <ProductInfoContainer>
+                <div>
+                    <ProductName>{productData?.name}</ProductName>
+                    <ProductPrice>R$ {productData?.price}</ProductPrice>
+                    {window.screen.width >= 800 ? 
+                        <>
+                            <ProductDescription>{productData?.description}</ProductDescription> 
+                            <AddSacolaButton>Adicionar à sacola</AddSacolaButton>
+                        </>
+                    : 
+                        <></>
+                    }
+                </div>
+                <ProductImage src={ImagemProduto}/>
+            </ProductInfoContainer>
+            
+            {window.screen.width < 800 ?
+                <>
+                    <AddSacolaButton>Adicionar à sacola</AddSacolaButton>
+                    <ProductDescription>{productData?.description}</ProductDescription>
+                </>
+                :
+                <></>
+            }
+            <OtherProductsLabel>Outros produtos</OtherProductsLabel>
             <OtherProducts>
                 {othersProductsData.map((e)=>{
                     return <ProductCard text="Adicionar à sacola" info={e}/>

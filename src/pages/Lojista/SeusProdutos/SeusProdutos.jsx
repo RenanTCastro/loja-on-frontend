@@ -19,14 +19,14 @@ import auth from "../../../utils/auth";
 
 export default function SeusProdutos(){
     const [productsData, setProductsData] = useState([]);
-    const [filter, setFilter] = useState({name:""});
+    const [filter, setFilter] = useState({filter:""});
 
     const handleInput = (e) =>{
-        setFilter({...filter, "name": e.target.value})
+        setFilter({...filter, "filter": e.target.value})
     }
 
     useEffect(()=>{
-        api.get(`/getAllProducts/${auth.get().user_id}`, {filter:"dd"})
+        api.post(`/getAllProducts/${auth.get().user_id}`, filter)
         .then((res)=>{
             setProductsData(res.data);
         })

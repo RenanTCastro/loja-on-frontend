@@ -4,17 +4,17 @@ export const DivProductCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   width: 33.333vw;
-  min-height: 63.889vw; 
   padding: 2.778vw;
-  box-shadow: 0 0 1.111vw 0.278vw rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 2vw 0.2vw rgba(0, 0, 0, 0.08);
   border-radius: 1.389vw;
   
   @media (min-width: 800px) {
     width: 14.641vw;
     padding: 1.098vw;
-    min-height: 25.622vw; 
     border-radius: 0.366vw;
+    box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.08);
   }
 `;
 
@@ -60,7 +60,7 @@ export const AddSacolaButton = styled.button`
   font-family: 'Montserrat', sans-serif,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;  text-align: center;
-  background: ${props => props.theme.color};;
+  background: ${props => props.theme.color};
   padding: 0 2.778vw;
   color: white;
   border: none;

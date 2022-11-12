@@ -28,9 +28,12 @@ export default function ProductCard(params){
     console.log(window.screen)
     return(
         <DivProductCard>
-            <ImageProduct src={defaultProductImage} alt="Imagem do produto" onClick={handleClickProduct}/>
-            <ProductName onClick={handleClickProduct}>{params.info.name}</ProductName>
-            <ProductPrice>R$ {params.info.price}</ProductPrice>
+            <div>
+                <ImageProduct src={defaultProductImage} alt="Imagem do produto" onClick={handleClickProduct}/>
+                <ProductName onClick={handleClickProduct}>{params.info.name}</ProductName>
+                <ProductPrice>R$ {params.info.price}</ProductPrice>                
+            </div>
+
             <AddSacolaButton onClick={handleClick}>{buttonText}</AddSacolaButton>
         </DivProductCard>
     );

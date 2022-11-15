@@ -7,6 +7,7 @@ import IconLoja from "../../../assets/lojaIcon.png"
 
 import api from "../../../services/api";
 import auth from "../../../utils/auth";
+import upload from "../../../utils/upload";
 
 import { 
     HomeContainer,
@@ -44,10 +45,17 @@ export default function Home(){
             console.log("Erro ao buscar loja", err)
         })
     },[]);
-    
+
     return(
         <HomeContainer>
             <Menu page="Cliente"/>
+
+            <form onSubmit={upload}>
+                <input type="file"/>
+                <button type="submit">Enviar</button>
+            </form>
+            <br/>
+
             <LojaIcon src={IconLoja}/>
             <Bio>{userData?.bio}</Bio>
             <SearchInput placeholder="Pesquisar..." onChange={handleInput}/>

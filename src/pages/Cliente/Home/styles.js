@@ -14,8 +14,8 @@ export const LojaIcon = styled.img`
     width: 27.778vw;
     height: 27.778vw;
     @media (min-width: 800px) {
-        width: 14.826vw;
-        height: 14.826vw;
+        width: 10vw;
+        height: 10vw;
     }
 `;
 

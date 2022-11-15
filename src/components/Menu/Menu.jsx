@@ -33,7 +33,6 @@ export default function Menu(props){
     const [hideIcon, setHideIcon] = useState(false)
     const [goBack, setGoBack] = useState(false)
 
-    console.log(goBack)
     useEffect(()=>{
         switch(page){
             case 'Cliente':

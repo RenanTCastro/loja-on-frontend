@@ -110,5 +110,6 @@ export const OtherProducts = styled.div`
         margin-top: 1.483vw;
         gap: 3.706vw;
         margin-left: 6.667vw;
+        overflow-x: hidden;
     }
 `;

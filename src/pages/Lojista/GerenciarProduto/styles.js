@@ -20,13 +20,14 @@ export const FotoProduto = styled.img`
     }
 `;
 
-export const GerenciarProdutoTexto = styled.p`
+export const AlterarFoto = styled.label`
     font-size: 4.444vw;
     font-weight: 400;
     color: ${props => props.theme.color};
     text-align: center;
     margin: 5.556vw 0 5.556vw 0;
     cursor: pointer;
+
     @media (min-width: 800px) {
         font-size: 1.186vw;
         margin: 1.853vw;

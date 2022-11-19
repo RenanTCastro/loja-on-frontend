@@ -1,6 +1,6 @@
 import React from "react";
 
-import defaultProductImage from "../../assets/defaultProductImage.png";
+import NoImage from "../../assets/noImage.svg";
 
 import { 
     DivProductCard, 
@@ -28,7 +28,7 @@ export default function ProductCard(params){
     return(
         <DivProductCard>
             <div>
-                <ImageProduct src={defaultProductImage} alt="Imagem do produto" onClick={handleClickProduct}/>
+                <ImageProduct src={params.info.image ? params.info.image : NoImage} alt="Imagem do produto" onClick={handleClickProduct}/>
                 <ProductName onClick={handleClickProduct}>{params.info.name}</ProductName>
                 <ProductPrice>R$ {params.info.price}</ProductPrice>                
             </div>

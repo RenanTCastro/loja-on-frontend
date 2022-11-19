@@ -10,7 +10,7 @@ export const MenuContainer = styled.div`
     box-shadow: 0px 0px 0.371vw rgba(0, 0, 0, 0.15);
     position: fixed;
     top: 0;
-
+    z-index: 3;
     @media (min-width: 800px) {
         height: 5vw;
     }

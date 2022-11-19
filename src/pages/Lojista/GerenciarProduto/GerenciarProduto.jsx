@@ -2,21 +2,25 @@ import React, { useEffect, useState } from "react";
 
 import api from "../../../services/api";
 import auth from "../../../utils/auth";
-
-import Foto from "../../../assets/defaultProductImage.png"
+import upload from "../../../utils/upload";
 
 import { InputLojaOn, TextAreaLojaOn, ButtonLojaOn } from "../../../components/index";
+import { LoadingAnimations } from "../../../components/LoadingAnimations";
 import {Menu} from "../../../components/index";
+
+import NoImage from "../../../assets/noImage.svg";
 
 import { 
     GerenciarProdutoContainer,
-    GerenciarProdutoTexto,
+    AlterarFoto,
     FotoProduto,
     ButtonContainer
 } from "./styles";
 
 export default function GerenciarProduto(){
     const [productData, setProductData] = useState({});
+    const [imgURL, setImgURL] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     let product_id = window.location.search.substring(1).split('&')[0].split('=')[1];
 
@@ -56,13 +60,34 @@ export default function GerenciarProduto(){
         });
     }
 
+    const handleUpload = async(e)=>{
+        setIsLoading(true);
+        const url = await upload(e)
+        setImgURL(url);
+        setProductData({...productData, "image" : url});
+        setIsLoading(false);    
+    } 
+
+    const handleChange = async()=>{
+        document.getElementById("changeImage").click();
+    } 
+
     return(
         <GerenciarProdutoContainer>
             <Menu page="Configurações" text="Editar Produto"/>
-            <FotoProduto src={Foto}/>
-            <GerenciarProdutoTexto>
-                Definir foto do produto
-            </GerenciarProdutoTexto>
+
+            {isLoading ? 
+                <LoadingAnimations/> : 
+                <FotoProduto 
+                    src={productData?.image? imgURL? imgURL : productData?.image : NoImage}/> 
+            }
+
+            <AlterarFoto>
+                <form onSubmit={handleUpload} id="form1"/>
+                Alterar foto do produto
+                <input type="file" style={{display: "none"}} form="form1" onChange={handleChange}/>
+                <button type="submit" form="form1" id="changeImage" style={{display: "none"}}/>
+            </AlterarFoto>
             
             <InputLojaOn placeholder="Nome do produto" onChange={handleInput} name="name" value={productData?.name}/>
             <InputLojaOn placeholder="Preço" type="number" onChange={handleInput} name="price" value={productData?.price}/>

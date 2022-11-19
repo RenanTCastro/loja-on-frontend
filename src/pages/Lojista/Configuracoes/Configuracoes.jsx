@@ -2,18 +2,22 @@ import React, { useEffect, useState } from "react";
 
 import Foto from "../../../assets/lojaIcon.png"
 
-import { InputLojaOn, TextAreaLojaOn, ButtonLojaOn } from "../../../components/index";
 import {Menu} from "../../../components/index";
+import { InputLojaOn, TextAreaLojaOn, ButtonLojaOn } from "../../../components/index";
+import { LoadingAnimations } from "../../../components/LoadingAnimations";
+
+import Cookies from "js-cookie";
 import auth from "../../../utils/auth";
 import api from "../../../services/api";
+import upload from "../../../utils/upload";
+
 import { 
     ConfiguracoesContainer,
     AlterarFoto,
     FotoProduto,
     ButtonContainer
 } from "./styles";
-import upload from "../../../utils/upload";
-import { LoadingAnimations } from "../../../components/LoadingAnimations";
+import { InputColorLojaOn } from "../../../components/InputColorLojaOn";
 
 export default function Configuracoes(){
     const [userData, setUserData] = useState({});
@@ -24,10 +28,11 @@ export default function Configuracoes(){
         setUserData({...userData, [e.target.name] : e.target.value});
     }
 
-    const handleSave = ()=>{
+    const handleSave = async ()=>{
+
         api.put(`/editarperfil/${auth.get().user_id}`, userData)
         .then(()=>{
-            console.log("Deu certo");
+            Cookies.set("color", userData.color);
             window.location = "/produtos";
         })
         .catch((err)=>{
@@ -39,7 +44,7 @@ export default function Configuracoes(){
         api.get(`/lojainfo/${auth.get().user_id}`)
         .then((res)=>{
             setUserData(res.data);
-            console.log(res.data)
+            setImgURL(res.data.avatar_url);
         })
         .catch((err)=>{
             console.log("Erro ao buscar produto", err)
@@ -50,8 +55,9 @@ export default function Configuracoes(){
 
     const handleUpload = async(e)=>{
         setIsLoading(true);
-        const a = await upload(e)
-        setImgURL(a);
+        const url = await upload(e)
+        setImgURL(url);
+        setUserData({...userData, "avatar_url" : url});
         setIsLoading(false);    
     } 
 
@@ -74,7 +80,7 @@ export default function Configuracoes(){
             <InputLojaOn placeholder="Nome da loja" name="name" value={userData?.name} onChange={handleInput}/>
             <InputLojaOn placeholder="Whatsapp" name="whatsapp" value={userData?.whatsapp} onChange={handleInput}/>
             <TextAreaLojaOn rows="5" placeholder="Descrição da loja" name="bio" value={userData?.bio} onChange={handleInput}/>
-            <InputLojaOn placeholder="Cor principal" name="color" value={userData?.color} onChange={handleInput}/>
+            <InputColorLojaOn text={userData?.color}name="color" onChange={handleInput}/>
             
             <ButtonContainer>
                 <ButtonLojaOn name="Salvar alterações" onClick={handleSave}/>

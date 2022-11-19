@@ -33,7 +33,8 @@ export const AlterarFoto = styled.label`
     @media (min-width: 800px) {
         font-size: 1.186vw;
         margin: 1.853vw;
-    }`;
+    }
+`;
 
 export const ButtonContainer = styled.div`
     display: flex;

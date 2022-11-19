@@ -7,7 +7,6 @@ import IconLoja from "../../../assets/lojaIcon.png"
 
 import api from "../../../services/api";
 import auth from "../../../utils/auth";
-import upload from "../../../utils/upload";
 
 import { 
     HomeContainer,
@@ -50,13 +49,7 @@ export default function Home(){
         <HomeContainer>
             <Menu page="Cliente"/>
 
-            <form onSubmit={upload}>
-                <input type="file"/>
-                <button type="submit">Enviar</button>
-            </form>
-            <br/>
-
-            <LojaIcon src={IconLoja}/>
+            <LojaIcon src={userData.avatar_url}/>
             <Bio>{userData?.bio}</Bio>
             <SearchInput placeholder="Pesquisar..." onChange={handleInput}/>
             <ProductsContainer>

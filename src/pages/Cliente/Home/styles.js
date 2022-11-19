@@ -13,6 +13,8 @@ export const HomeContainer = styled.div`
 export const LojaIcon = styled.img`
     width: 27.778vw;
     height: 27.778vw;
+    border-radius: 50%;
+
     @media (min-width: 800px) {
         width: 10vw;
         height: 10vw;

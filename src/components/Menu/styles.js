@@ -21,7 +21,7 @@ export const Icones = styled.div`
     height: 6.944vw;
     margin-right: 8.333vw;
     z-index: 2;
-
+    cursor: pointer;
     @media (min-width: 800px) {
         width: 2.5vw;
         height: 2.5vw;

@@ -43,7 +43,7 @@ export const ProductPrice = styled.p`
 
 export const ProductImage = styled.img`
     width: 85vw;
-    height: 85vw;
+    height: auto;
     margin: 4.167vw 0 4.167vw 7.5vw;
     @media (min-width: 800px) {
         width: 39.288vw;

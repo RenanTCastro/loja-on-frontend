@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-// import ImagemProduto from "../../../assets/ImagemProduto.png"
-import ImagemProduto from "../../../assets/m.png"
-
 import { Menu } from "../../../components";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 
 import api from "../../../services/api";
 import auth from "../../../utils/auth";
+
+import NoImage from "../../../assets/noImage.svg";
 
 import { 
     ProductContainer,
@@ -64,7 +63,7 @@ export default function Home(){
                         <></>
                     }
                 </div>
-                <ProductImage src={ImagemProduto}/>
+                <ProductImage src={productData?.image? productData?.image : NoImage}/>
             </ProductInfoContainer>
             
             {window.screen.width < 800 ?

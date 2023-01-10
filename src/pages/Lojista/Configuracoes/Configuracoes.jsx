@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Foto from "../../../assets/lojaIcon.png"
+import NoImage from "../../../assets/noImage.svg"
 
 import {Menu} from "../../../components/index";
 import { InputLojaOn, TextAreaLojaOn, ButtonLojaOn } from "../../../components/index";
@@ -68,7 +68,7 @@ export default function Configuracoes(){
     return(
         <ConfiguracoesContainer>
             <Menu page="Configurações" text="Configurações"/>
-            {isLoading ? <LoadingAnimations/> : <FotoProduto src={imgURL}/> }
+            {isLoading ? <LoadingAnimations/> : <FotoProduto src={imgURL? imgURL : NoImage}/> }
 
             <AlterarFoto>
                 <form onSubmit={handleUpload} id="form1"/>

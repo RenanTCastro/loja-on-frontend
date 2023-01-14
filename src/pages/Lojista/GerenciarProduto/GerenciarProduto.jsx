@@ -89,10 +89,10 @@ export default function GerenciarProduto(){
                 <button type="submit" form="form1" id="changeImage" style={{display: "none"}}/>
             </AlterarFoto>
             
-            <InputLojaOn placeholder="Nome do produto" onChange={handleInput} name="name" value={productData?.name}/>
-            <InputLojaOn placeholder="Preço" type="number" onChange={handleInput} name="price" value={productData?.price}/>
-            <TextAreaLojaOn rows="5" placeholder="Descrição do produto" onChange={handleInput} name="description" value={productData?.description}/>
-            <InputLojaOn placeholder="Código do produto" onChange={handleInput} name="code" value={productData?.code}/>
+            <InputLojaOn placeholder="Ex. Camisa básica preta" text="Nome do produto" onChange={handleInput} name="name" value={productData?.name}/>
+            <InputLojaOn placeholder="99,90" text="Preço" type="number" onChange={handleInput} name="price" value={productData?.price}/>
+            <TextAreaLojaOn rows="5" placeholder="Fale sobre o seu produto..." text="Descrição do produto" onChange={handleInput} name="description" value={productData?.description}/>
+            <InputLojaOn placeholder="Ex. 42FKJ4" text="Código do produto" onChange={handleInput} name="code" value={productData?.code}/>
 
             <ButtonContainer>
                 <ButtonLojaOn name="Salvar alterações" colorType="confirmar" onClick={handleSave}/>

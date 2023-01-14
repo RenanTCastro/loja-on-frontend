@@ -77,10 +77,10 @@ export default function Configuracoes(){
                 <button type="submit" form="form1" id="changeImage" style={{display: "none"}}/>
             </AlterarFoto>
 
-            <InputLojaOn placeholder="Nome da loja" name="name" value={userData?.name} onChange={handleInput}/>
-            <InputLojaOn placeholder="Whatsapp" name="whatsapp" value={userData?.whatsapp} onChange={handleInput}/>
-            <TextAreaLojaOn rows="5" placeholder="Descrição da loja" name="bio" value={userData?.bio} onChange={handleInput}/>
-            <InputColorLojaOn text={userData?.color}name="color" onChange={handleInput}/>
+            <InputLojaOn placeholder="Nome da loja" text="Nome da loja" name="name" value={userData?.name} onChange={handleInput}/>
+            <InputLojaOn placeholder="Whatsapp" text="Número Whatsapp" name="whatsapp" value={userData?.whatsapp} onChange={handleInput}/>
+            <TextAreaLojaOn rows="5" placeholder="Dê uma escrição da loja" text="Sobre a loja" name="bio" value={userData?.bio} onChange={handleInput}/>
+            <InputColorLojaOn text={userData?.color}name="color" textInput="Cor principal da loja" onChange={handleInput}/>
             
             <ButtonContainer>
                 <ButtonLojaOn name="Salvar alterações" onClick={handleSave}/>

@@ -1,12 +1,12 @@
 import styled from "styled-components/macro";
 
-export const InputLO = styled.input`
+export const Input = styled.input`
     width: 85vw;
     height: 11.111vw;
     border-radius: 1.389vw;
     border: 0.278vw solid ${props => props.theme.color};
     outline: none;
-    margin-bottom: 5.556vw;
+    margin-bottom: 14px;
     padding-left: 2.778vw;
     font-size: 3.889vw;
     font-family: 'Montserrat', sans-serif,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -22,4 +22,11 @@ export const InputLO = styled.input`
         margin-bottom: 1.464vw;
         padding-left: 1.098vw;
     }
+`;
+
+
+export const InputName = styled.p`
+    color: black;
+    font-size: 14px;
+    margin: 0 0 5px 3px;
 `;

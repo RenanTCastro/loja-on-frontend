@@ -1,11 +1,15 @@
 import React from "react";
 
 import { 
-    InputLO
+    InputName,
+    Input
 } from "./styles";
 
 export function InputLojaOn(params){
     return(
-        <InputLO {...params}/>
+        <div>
+            <InputName>{params.text}</InputName>
+            <Input {...params}/>
+        </div>
     );
 }

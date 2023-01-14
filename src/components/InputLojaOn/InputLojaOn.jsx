@@ -4,7 +4,7 @@ import {
     InputLO
 } from "./styles";
 
-export default function InputLojaOn(params){
+export function InputLojaOn(params){
     return(
         <InputLO {...params}/>
     );

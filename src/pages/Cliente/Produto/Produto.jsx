@@ -53,7 +53,7 @@ export default function Home(){
             <ProductInfoContainer>
                 <div>
                     <ProductName>{productData?.name}</ProductName>
-                    <ProductPrice>R$ {productData?.price}</ProductPrice>
+                    <ProductPrice>{productData?.price}</ProductPrice>
                     {window.screen.width >= 800 ? 
                         <>
                             <ProductDescription>{productData?.description}</ProductDescription> 

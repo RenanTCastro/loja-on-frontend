@@ -1,0 +1,1 @@
+export { default as EditIconComponent } from "./EditIconComponent";

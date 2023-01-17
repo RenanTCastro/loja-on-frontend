@@ -3,6 +3,7 @@ import React from "react";
 import NoImage from "../../assets/noImage.svg";
 
 import { AddIconComponent } from "../AddIconComponent";
+import { EditIconComponent } from "../EditIconComponent";
 
 import { 
     DivProductCard, 
@@ -32,9 +33,12 @@ export default function ProductCard(params){
 
     return(
         <DivProductCard>
-            <div>
-                <ImageProduct src={params.info.image ? params.info.image : NoImage} alt="Imagem do produto" onClick={handleClickProduct}/>
-                <ProductName onClick={handleClickProduct}>{params.info.name}</ProductName>
+            <div style={{display: "flex", flexDirection: "column", height: "100%",justifyContent: "space-between"}}>
+                <div>
+                    <ImageProduct src={params.info.image ? params.info.image : NoImage} alt="Imagem do produto" onClick={handleClickProduct}/>
+                    <ProductName onClick={handleClickProduct}>{params.info.name}</ProductName>
+                </div>
+
                 <ProductCardBox>
                     {isPromotionalProduct ?
                         <PromotionBox>
@@ -43,8 +47,12 @@ export default function ProductCard(params){
                         </PromotionBox>
                     :
                         <ProductPrice>{params.info.price}</ProductPrice> 
-                    }               
-                    <AddIconComponent onClick={handleClick}/>
+                    } 
+                    {
+                        buttonText === "EDITAR" ?
+                        <EditIconComponent onClick={handleClick}/>:          
+                        <AddIconComponent onClick={handleClick}/>
+                    }
                 </ProductCardBox>
             </div>
         </DivProductCard>

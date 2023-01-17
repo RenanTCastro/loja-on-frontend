@@ -26,6 +26,18 @@ export default function AdicionarProduto(){
         setProductData({...productData, [e.target.name] : e.target.value});
     }
 
+    const handleKeyUp = (e)=>{
+        let value = e.currentTarget.value;
+        value = value.replace(/\D/g, "");
+        value = value.replace(/(\d)(\d{2})$/, "$1,$2");
+        value = value.replace(/(?=(\d{3})+(\D))\B/g, ".");
+        value = "R$ " + value;
+
+        e.currentTarget.value = value;
+        setProductData({...productData, [e.target.name] : value});
+        return e
+    }
+
     const handleSave = async()=>{
         await api.post('/addProduct', {...productData, user_id: auth.get().user_id})
         .then((res)=>{
@@ -62,10 +74,10 @@ export default function AdicionarProduto(){
             </AlterarFoto>
 
             
-            <InputLojaOn placeholder="Nome do produto" onChange={handleInput} name="name"/>
-            <InputLojaOn placeholder="Preço" type="number" onChange={handleInput} name="price"/>
-            <TextAreaLojaOn rows="5" placeholder="Descrição do produto" onChange={handleInput} name="description"/>
-            <InputLojaOn placeholder="Código do produto" onChange={handleInput} name="code"/>
+            <InputLojaOn text="Nome do produto" placeholder="Ex. Camisa básica preta" onChange={handleInput} name="name"/>
+            <InputLojaOn text="Preço" type="text" placeholder="R$ 99,90" onKeyUp={handleKeyUp} name="price"/>
+            <TextAreaLojaOn rows="5" text="Descrição do produto" placeholder="Fale sobre o seu produto..." onChange={handleInput} name="description"/>
+            <InputLojaOn text="Código do produto" placeholder="Ex. 42FKJ4" onChange={handleInput} name="code"/>
             
             <ButtonContainer>
                 <ButtonLojaOn name="Salvar alterações" colorType="confirmar" onClick={handleSave}/>

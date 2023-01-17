@@ -102,7 +102,7 @@ export default function GerenciarProduto(){
             </AlterarFoto>
             
             <InputLojaOn placeholder="Ex. Camisa básica preta" text="Nome do produto" onChange={handleInput} name="name" value={productData?.name}/>
-            <InputLojaOn placeholder="99,90" text="Preço" type="text" onKeyUp={handleKeyUp} name="price" value={productData?.price}/>
+            <InputLojaOn placeholder="R$ 99,90" text="Preço" type="text" onKeyUp={handleKeyUp} name="price" value={productData?.price}/>
             <TextAreaLojaOn rows="5" placeholder="Fale sobre o seu produto..." text="Descrição do produto" onChange={handleInput} name="description" value={productData?.description}/>
             <InputLojaOn placeholder="Ex. 42FKJ4" text="Código do produto" onChange={handleInput} name="code" value={productData?.code}/>
 

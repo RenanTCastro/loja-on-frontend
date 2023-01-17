@@ -4,7 +4,7 @@ export const DivProductCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  
   width: 33.333vw;
   padding: 2.778vw;
   

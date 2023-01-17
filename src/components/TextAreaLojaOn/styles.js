@@ -5,7 +5,7 @@ export const TextArea = styled.textarea`
     border-radius: 1.389vw;
     border: 0.278vw solid ${props => props.theme.color};
     outline: none;
-    margin-bottom: 5.556vw;
+    margin-bottom: 10px;
     padding-left: 2.778vw;
     padding-top: 2.778vw;
     font-size: 3.889vw;

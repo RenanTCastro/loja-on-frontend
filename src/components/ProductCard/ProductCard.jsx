@@ -38,11 +38,11 @@ export default function ProductCard(params){
                 <ProductCardBox>
                     {isPromotionalProduct ?
                         <PromotionBox>
-                            <OriginalProductPrice>R$ {params.info.price}</OriginalProductPrice>                
-                            <ProductPrice>R$ {params.info.price}</ProductPrice>                
+                            <OriginalProductPrice>{params.info.price}</OriginalProductPrice>                
+                            <ProductPrice>{params.info.price}</ProductPrice>                
                         </PromotionBox>
                     :
-                        <ProductPrice>R$ {params.info.price}</ProductPrice> 
+                        <ProductPrice>{params.info.price}</ProductPrice> 
                     }               
                     <AddIconComponent onClick={handleClick}/>
                 </ProductCardBox>

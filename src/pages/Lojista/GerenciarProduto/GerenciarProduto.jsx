@@ -40,6 +40,18 @@ export default function GerenciarProduto(){
         setProductData({...productData, [e.target.name] : e.target.value});
     }
 
+    const handleKeyUp = (e)=>{
+        let value = e.currentTarget.value;
+        value = value.replace(/\D/g, "");
+        value = value.replace(/(\d)(\d{2})$/, "$1,$2");
+        value = value.replace(/(?=(\d{3})+(\D))\B/g, ".");
+        value = "R$ " + value;
+
+        e.currentTarget.value = value;
+        setProductData({...productData, [e.target.name] : value});
+        return e
+    }
+
     const handleSave = async()=>{
         await api.put(`/editProduct/${product_id}`, {...productData, user_id: auth.get().user_id})
         .then((res)=>{
@@ -90,7 +102,7 @@ export default function GerenciarProduto(){
             </AlterarFoto>
             
             <InputLojaOn placeholder="Ex. Camisa básica preta" text="Nome do produto" onChange={handleInput} name="name" value={productData?.name}/>
-            <InputLojaOn placeholder="99,90" text="Preço" type="number" onChange={handleInput} name="price" value={productData?.price}/>
+            <InputLojaOn placeholder="99,90" text="Preço" type="text" onKeyUp={handleKeyUp} name="price" value={productData?.price}/>
             <TextAreaLojaOn rows="5" placeholder="Fale sobre o seu produto..." text="Descrição do produto" onChange={handleInput} name="description" value={productData?.description}/>
             <InputLojaOn placeholder="Ex. 42FKJ4" text="Código do produto" onChange={handleInput} name="code" value={productData?.code}/>
 

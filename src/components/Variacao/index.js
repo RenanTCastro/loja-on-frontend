@@ -1,0 +1,1 @@
+export { Variacao } from "./Variacao";

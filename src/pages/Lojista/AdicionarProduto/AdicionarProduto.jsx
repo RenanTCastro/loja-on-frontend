@@ -4,7 +4,7 @@ import api from "../../../services/api";
 import auth from "../../../utils/auth";
 import upload from "../../../utils/upload";
 
-import { InputLojaOn, TextAreaLojaOn, ButtonLojaOn } from "../../../components/index";
+import { InputLojaOn, TextAreaLojaOn, ButtonLojaOn, Variacao } from "../../../components/index";
 import { LoadingAnimations } from "../../../components/LoadingAnimations";
 import {Menu} from "../../../components/index";
 
@@ -78,7 +78,7 @@ export default function AdicionarProduto(){
             <InputLojaOn text="Preço" type="text" placeholder="R$ 99,90" onKeyUp={handleKeyUp} name="price"/>
             <TextAreaLojaOn rows="5" text="Descrição do produto" placeholder="Fale sobre o seu produto..." onChange={handleInput} name="description"/>
             <InputLojaOn text="Código do produto" placeholder="Ex. 42FKJ4" onChange={handleInput} name="code"/>
-            
+            <Variacao />
             <ButtonContainer>
                 <ButtonLojaOn name="Salvar alterações" colorType="confirmar" onClick={handleSave}/>
                 <ButtonLojaOn name="Voltar" onClick={()=>window.location="/produtos"}/>

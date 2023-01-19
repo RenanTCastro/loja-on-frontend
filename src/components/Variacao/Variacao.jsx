@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 import {InputLojaOn} from "../InputLojaOn/InputLojaOn";
 import {DeleteIconComponent} from "../DeleteIconComponent/index"
@@ -12,10 +12,14 @@ import {
     InputQuantity,
     OptionsContainer
 } from "./styles";
+import { useEffect } from "react";
+import { AddOptionIconComponent } from "../AddOptionIconComponent";
 
 export function Variacao(params){
     let dataArray = [];
+    const { setVariationData } = params
 
+    const quantity = useRef(0);
     const [count, setCount] = useState(0);
     const [data, setData] = useState([]);
     const [options, setOptions] = useState([]);
@@ -28,6 +32,9 @@ export function Variacao(params){
 
     const handleAddOption = ()=>{
         setCount(count + 1);
+        quantity.current = quantity.current + 1;
+        console.log(quantity)
+
         const newOption = 
         [
             <div id={"v"+count} >
@@ -54,13 +61,15 @@ export function Variacao(params){
        const index = pos.indexOf(component);
        dataArray = dataArray.splice(index,1);
        setData(dataArray)
+       console.log(quantity)
 
+       quantity.current = quantity.current - 1;
        document.getElementById(component).remove()
+       console.log(quantity)
     }
 
     const handleChangeVariation = (e)=>{
         setVariation({[e.target.name]: e.target.value});
-        console.log(variation)
     }
 
     const handleChangeOptions = (e)=>{
@@ -83,6 +92,14 @@ export function Variacao(params){
         }
     }
 
+    useEffect(()=>{
+        const addProductData = {
+            variation: variation?.variation,
+            data
+        }
+        console.log(addProductData)
+        setVariationData(addProductData)
+    },[data, setVariationData, variation])
 
     return(
         <div style={{width: "87.778vw"}}>
@@ -90,8 +107,8 @@ export function Variacao(params){
             {
                !hasOptions ? 
                 <AddContainer onClick={handleClick}>
-                    <Button>+</Button> 
-                    <Text>Adicionar novo conjunto</Text>
+                    <AddOptionIconComponent width="8vw" height="8vw"/> 
+                    <Text style={{marginLeft: "10px"}}>Adicionar novo conjunto</Text>
                 </AddContainer>
                 :       
                 <div >
@@ -100,10 +117,14 @@ export function Variacao(params){
                     
                     {options}
                     
-                    <AddContainer onClick={handleAddOption}>
-                        <Button>+</Button> 
-                        <Text>Adicionar opção</Text>
-                    </AddContainer>
+                    {
+                        quantity.current >= 8 ? <></> : 
+                        <AddContainer onClick={handleAddOption}>
+                            <AddOptionIconComponent width="8vw" height="8vw"/> 
+                            <Text style={{marginLeft: "10px"}}>Adicionar opção</Text>
+                        </AddContainer>
+                    }
+
                 </div>
             }
         </div>

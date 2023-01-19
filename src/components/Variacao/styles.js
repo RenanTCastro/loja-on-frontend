@@ -51,6 +51,8 @@ export const InputQuantity = styled.input`
 export const AddContainer = styled.div`
     display: flex;
     flex-direction: row;
+    align-items: center;
+    margin-bottom: 12px;
 `;
 
 export const OptionsContainer = styled.div`
@@ -71,9 +73,3 @@ export const TextOptions = styled.p`
     margin: 0 0 5px 3px;
 `;
 
-
-export const Button = styled.button`
-    width: 11.111vw;
-    height: 11.111vw;
-    margin: 0 0 5px 3px;
-`;

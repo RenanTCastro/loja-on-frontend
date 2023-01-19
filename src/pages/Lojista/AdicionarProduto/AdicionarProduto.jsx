@@ -21,6 +21,7 @@ export default function AdicionarProduto(){
     const [productData, setProductData] = useState({});
     const [imgURL, setImgURL] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [variationData, setVariationData] = useState([]);
 
     const handleInput = (e)=>{
         setProductData({...productData, [e.target.name] : e.target.value});
@@ -39,13 +40,15 @@ export default function AdicionarProduto(){
     }
 
     const handleSave = async()=>{
-        await api.post('/addProduct', {...productData, user_id: auth.get().user_id})
-        .then((res)=>{
-            window.location="/produtos";
-        })
-        .catch((err)=>{
-            console.log(err);
-        });
+        const data = [{...productData, ...variationData}]
+        console.log(data[0])
+        // await api.post('/addProduct', {...productData, user_id: auth.get().user_id})
+        // .then((res)=>{
+        //     window.location="/produtos";
+        // })
+        // .catch((err)=>{
+        //     console.log(err);
+        // });
     }
 
     const handleUpload = async(e)=>{
@@ -78,7 +81,7 @@ export default function AdicionarProduto(){
             <InputLojaOn text="Preço" type="text" placeholder="R$ 99,90" onKeyUp={handleKeyUp} name="price"/>
             <TextAreaLojaOn rows="5" text="Descrição do produto" placeholder="Fale sobre o seu produto..." onChange={handleInput} name="description"/>
             <InputLojaOn text="Código do produto" placeholder="Ex. 42FKJ4" onChange={handleInput} name="code"/>
-            <Variacao />
+            <Variacao setVariationData={setVariationData}/>
             <ButtonContainer>
                 <ButtonLojaOn name="Salvar alterações" colorType="confirmar" onClick={handleSave}/>
                 <ButtonLojaOn name="Voltar" onClick={()=>window.location="/produtos"}/>

@@ -40,15 +40,14 @@ export default function AdicionarProduto(){
     }
 
     const handleSave = async()=>{
-        const data = [{...productData, ...variationData}]
-        console.log(data[0])
-        // await api.post('/addProduct', {...productData, user_id: auth.get().user_id})
-        // .then((res)=>{
-        //     window.location="/produtos";
-        // })
-        // .catch((err)=>{
-        //     console.log(err);
-        // });
+        const data = [{...productData, ...variationData, user_id: auth.get().user_id}]
+        await api.post('/addProduct', data[0])
+        .then((res)=>{
+            window.location="/produtos";
+        })
+        .catch((err)=>{
+            console.log(err);
+        });
     }
 
     const handleUpload = async(e)=>{

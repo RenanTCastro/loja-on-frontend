@@ -4,7 +4,7 @@ import api from "../../../services/api";
 import auth from "../../../utils/auth";
 import upload from "../../../utils/upload";
 
-import { InputLojaOn, TextAreaLojaOn, ButtonLojaOn } from "../../../components/index";
+import { InputLojaOn, TextAreaLojaOn, ButtonLojaOn, Variacao } from "../../../components/index";
 import { LoadingAnimations } from "../../../components/LoadingAnimations";
 import {Menu} from "../../../components/index";
 
@@ -21,6 +21,7 @@ export default function GerenciarProduto(){
     const [productData, setProductData] = useState({});
     const [imgURL, setImgURL] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [variationData, setVariationData] = useState([]);
 
     let product_id = window.location.search.substring(1).split('&')[0].split('=')[1];
 
@@ -53,7 +54,8 @@ export default function GerenciarProduto(){
     }
 
     const handleSave = async()=>{
-        await api.put(`/editProduct/${product_id}`, {...productData, user_id: auth.get().user_id})
+        const data = [{...productData, ...variationData, user_id: auth.get().user_id}]
+        await api.put(`/editProduct/${product_id}`, data[0])
         .then((res)=>{
             window.location="/produtos";
         })
@@ -105,6 +107,7 @@ export default function GerenciarProduto(){
             <InputLojaOn placeholder="R$ 99,90" text="Preço" type="text" onKeyUp={handleKeyUp} name="price" value={productData?.price}/>
             <TextAreaLojaOn rows="5" placeholder="Fale sobre o seu produto..." text="Descrição do produto" onChange={handleInput} name="description" value={productData?.description}/>
             <InputLojaOn placeholder="Ex. 42FKJ4" text="Código do produto" onChange={handleInput} name="code" value={productData?.code}/>
+            <Variacao setVariationData={setVariationData} productOptions={productData?.data} productVariation={productData?.variation}/>
 
             <ButtonContainer>
                 <ButtonLojaOn name="Salvar alterações" colorType="confirmar" onClick={handleSave}/>

@@ -7,7 +7,6 @@ import {
     AddContainer,
     Text,
     TextOptions,
-    Button,
     Input,
     InputQuantity,
     OptionsContainer
@@ -16,91 +15,160 @@ import { useEffect } from "react";
 import { AddOptionIconComponent } from "../AddOptionIconComponent";
 
 export function Variacao(params){
-    let dataArray = [];
-    const { setVariationData } = params
-
+    let dataArray = useRef([]);
+    const count = useRef(0);
     const quantity = useRef(0);
-    const [count, setCount] = useState(0);
+    const { setVariationData, productOptions, productVariation } = params
+
     const [data, setData] = useState([]);
     const [options, setOptions] = useState([]);
     const [variation, setVariation] = useState();
-    const [hasOptions, setHasOptions] =  useState();
-    
+    const [hasOptions, setHasOptions] =  useState(true);
+
     const handleClick = ()=>{
         setHasOptions(!hasOptions)
     }
 
     const handleAddOption = ()=>{
-        setCount(count + 1);
+        count.current = count.current + 1;
         quantity.current = quantity.current + 1;
-        console.log(quantity)
-
+        
         const newOption = 
         [
-            <div id={"v"+count} >
+            <div id={"v"+count.current} >
             <OptionsContainer style={{justifyContent: "space-between"}}>
                 <div>
                     <TextOptions>Opção</TextOptions>
-                    <Input placeholder="Ex. M" onChange={handleChangeOptions} name="option" id={"v"+count}/>   
+                    <Input placeholder="Ex. M" onChange={handleChangeOptions} name="option" id={"v"+count.current}/>   
                 </div>
                 <div>
                     <TextOptions>Quantidade</TextOptions>
-                    <InputQuantity placeholder="Ex. 98" type="number" onChange={handleChangeOptions} name="quantity" id={"v"+count}/>
+                    <InputQuantity placeholder="Ex. 98" type="number" onChange={handleChangeOptions} name="quantity" id={"v"+count.current}/>
                 </div>
-                <DeleteIconComponent width="11.111vw" height="11.111vw" value={"v"+count} onClick={handleDeleteOption}/>
+                <DeleteIconComponent width="11.111vw" height="11.111vw" value={"v"+count.current} onClick={handleDeleteOption}/>
             </OptionsContainer>
             </div>
         ]       
         setOptions([...options, newOption]);
     }
 
-    const handleDeleteOption = (e)=>{
+    const handleDeleteOption = async  (e)=>{
        const component = e.currentTarget.getAttribute('value')
-       
-       const pos = data.map((e)=> e.id);
-       const index = pos.indexOf(component);
-       dataArray = dataArray.splice(index,1);
-       setData(dataArray)
-       console.log(quantity)
+       dataArray.current = await dataArray.current.filter(obj => obj.id != component);
+       setData(dataArray.current)
+
+       let newData = JSON.stringify(dataArray.current)
+       const addProductData = {
+           variation: variation?.variation,
+           data: newData
+       }
+       setVariationData(addProductData)
 
        quantity.current = quantity.current - 1;
        document.getElementById(component).remove()
-       console.log(quantity)
     }
 
     const handleChangeVariation = (e)=>{
         setVariation({[e.target.name]: e.target.value});
+        let newData = JSON.stringify(data)
+        const addProductData = {
+            variation: e.target.value,
+            data: newData
+        }
+        setVariationData(addProductData)
     }
 
     const handleChangeOptions = (e)=>{
-        dataArray = data;
-        const pos = dataArray.map((e)=> e.id);
+        console.log("AQUII", dataArray.current)
+        const pos = dataArray.current.map((e)=> e.id);
         const index = pos.indexOf(e.target.id);
         if(index === -1){
             const dataAux = {
                 id: e.target.id,
                 [e.target.name]: e.target.value
             }
-            dataArray.push(dataAux)
-            setData(dataArray)
+            dataArray.current.push(dataAux)
+            setData(dataArray.current)
+            let newData = JSON.stringify(dataArray.current)
+            const addProductData = {
+                variation: variation?.variation,
+                data: newData
+            }
+            setVariationData(addProductData)
         }else{
-            dataArray[index] = {
-                ...dataArray[index],
+            dataArray.current[index] = {
+                ...dataArray.current[index],
                 [e.target.name]: e.target.value
             }
-            setData(dataArray)
+            setData(dataArray.current)
+            let newData = JSON.stringify(dataArray.current)
+            const addProductData = {
+                variation: variation?.variation,
+                data: newData
+            }
+            setVariationData(addProductData)
         }
     }
 
     useEffect(()=>{
-        const addProductData = {
-            variation: variation?.variation,
-            data
-        }
-        console.log(addProductData)
-        setVariationData(addProductData)
-    },[data, setVariationData, variation])
+        setData(data);
+    },[data]);
 
+    useEffect(()=>{
+        if(productOptions !== undefined){
+            const savedOptions = JSON.parse(JSON.parse(JSON.stringify(productOptions)));
+            const higherId = savedOptions.reduce((p,c) =>{return (p.id > c.id) ? p : c})
+            count.current = parseInt(higherId.id.split('v')[1]);
+            console.log(count.current, parseInt(higherId.id.split('v')[1]))
+            const datas = savedOptions.map((e)=>{
+                quantity.current = quantity.current + 1;
+
+                return (
+                    <div id={e.id} >
+                        <OptionsContainer style={{justifyContent: "space-between"}}>
+                            <div>
+                                <TextOptions>Opção</TextOptions>
+                                <Input 
+                                    placeholder="Ex. M" 
+                                    onChange={handleChangeOptions} 
+                                    name="option" id={e.id} 
+                                    defaultValue={e.option}
+                                />   
+                            </div>
+                            <div>
+                                <TextOptions>Quantidade</TextOptions>
+                                <InputQuantity 
+                                    placeholder="Ex. 98" 
+                                    type="number" 
+                                    onChange={handleChangeOptions} 
+                                    name="quantity" id={e.id} 
+                                    defaultValue={e.quantity}
+                                />
+                            </div>
+                            <DeleteIconComponent 
+                                width="11.111vw" 
+                                height="11.111vw" 
+                                value={e.id} 
+                                onClick={handleDeleteOption}
+                            />
+                        </OptionsContainer>
+                    </div>            
+                )
+            })
+            let newData = JSON.stringify(savedOptions)
+            const productData = {
+                variation: productVariation,
+                data: newData
+            }
+            dataArray.current.push(...savedOptions)
+            setData(savedOptions)
+            setOptions(datas)
+            setVariationData(productData)
+
+            setVariation({variation: productVariation});
+        }
+    },[productOptions])
+    
     return(
         <div style={{width: "87.778vw"}}>
             <Text style={{marginBottom: "10px"}}>Variações</Text>
@@ -130,3 +198,4 @@ export function Variacao(params){
         </div>
     );
 }
+

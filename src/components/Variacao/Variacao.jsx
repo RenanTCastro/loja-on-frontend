@@ -119,7 +119,7 @@ export function Variacao(params){
             const savedOptions = JSON.parse(JSON.parse(JSON.stringify(productOptions)));
             const higherId = savedOptions.reduce((p,c) =>{return (p.id > c.id) ? p : c})
             count.current = parseInt(higherId.id.split('v')[1]);
-            console.log(count.current, parseInt(higherId.id.split('v')[1]))
+
             const datas = savedOptions.map((e)=>{
                 quantity.current = quantity.current + 1;
 

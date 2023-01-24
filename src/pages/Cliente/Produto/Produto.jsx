@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Menu } from "../../../components";
+import { Menu, ProductInfo } from "../../../components";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 
 import api from "../../../services/api";
@@ -68,7 +68,8 @@ export default function Home(){
             
             {window.screen.width < 800 ?
                 <>
-                    <AddSacolaButton>Adicionar à sacola</AddSacolaButton>
+                    <ProductInfo/>
+                    {/* <AddSacolaButton>Adicionar à sacola</AddSacolaButton> */}
                     <ProductDescription>{productData?.description}</ProductDescription>
                 </>
                 :

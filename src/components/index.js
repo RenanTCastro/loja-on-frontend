@@ -5,6 +5,7 @@ export * from "./ButtonLojaOn";
 export * from "./ErrorMessageInput";
 export * from "./InputColorLojaOn";
 export * from "./LoadingAnimations";
+export * from "./ProductInfo/ProductInfo";
 export * from "./DeleteIconComponent/DeleteIconComponent";
 export * from "./AddOptionIconComponent/AddOptionIconComponent";
 export * from "./Variacao/Variacao";

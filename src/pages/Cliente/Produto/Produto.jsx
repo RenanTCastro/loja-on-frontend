@@ -68,7 +68,7 @@ export default function Home(){
             
             {window.screen.width < 800 ?
                 <>
-                    <ProductInfo/>
+                    <ProductInfo data={productData}/>
                     {/* <AddSacolaButton>Adicionar à sacola</AddSacolaButton> */}
                     <ProductDescription>{productData?.description}</ProductDescription>
                 </>

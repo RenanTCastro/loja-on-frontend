@@ -16,12 +16,16 @@ export const DivProductOptions = styled.div`
 `;
 
 export const DivOption = styled.div`
-  border: 1px solid #019392;
+  border: 1px solid ${props => props.theme.color};
   border-radius: 5px;
   padding: 5px;
   min-width: 25px;
   text-align: center;
   cursor: pointer;
+  /* ${props => console.log(props.value, props.actualValue,props.value === props.actualValue )
+  // props.value === props.actualValue ? 
+  //   `background-color: ${props.theme.color}; color: white` : ""
+  } */
 `;
 
 export const TextOption = styled.p`
@@ -43,18 +47,19 @@ export const DivQuantity = styled.div`
   align-items: center;
   justify-content: center;
   padding: 10px 5;
-  border: 1px solid #019392;
+  border: 1px solid ${props => props.theme.color};
   width: 40px;
 `;
 
 export const DivChangeQuantity = styled.div`
   width: 20px;
-  border: 1px solid #019392;
+  border: 1px solid ${props => props.theme.color};
   border-width: 0px 1px 1px 0px;
 `;
 
 export const DivChangeQuantityText = styled.div`
-  border: 1px solid #019392;
+  //background: transparent ;
+  border: 1px solid ${props => props.theme.color};
   border-width: 1px 0px 0px 0px;
   cursor: pointer;
 `;

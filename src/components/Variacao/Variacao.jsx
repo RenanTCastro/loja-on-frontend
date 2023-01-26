@@ -54,7 +54,7 @@ export function Variacao(params){
 
     const handleDeleteOption = async  (e)=>{
        const component = e.currentTarget.getAttribute('value')
-       dataArray.current = await dataArray.current.filter(obj => obj.id != component);
+       dataArray.current = await dataArray.current.filter(obj => obj.id !== component);
        setData(dataArray.current)
 
        let newData = JSON.stringify(dataArray.current)
@@ -167,6 +167,7 @@ export function Variacao(params){
 
             setVariation({variation: productVariation});
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[productOptions])
     
     return(

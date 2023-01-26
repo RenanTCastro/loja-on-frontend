@@ -12,25 +12,29 @@ export const DivProductOptions = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 18px;
 `;
 
-export const DivOption = styled.div`
+export const DivOption = styled.div.attrs(props => ({
+  quantity: props.quantity,
+}))`
   border: 1px solid ${props => props.theme.color};
   border-radius: 5px;
   padding: 5px;
   min-width: 25px;
   text-align: center;
   cursor: pointer;
-  /* ${props => console.log(props.value, props.actualValue,props.value === props.actualValue )
-  // props.value === props.actualValue ? 
-  //   `background-color: ${props.theme.color}; color: white` : ""
-  } */
 `;
 
 export const TextOption = styled.p`
     font-size: 16px;
     font-weight: 600;
+    font-family: 'Montserrat', sans-serif,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+`;
+
+export const TextQuantity = styled.p`
+    font-size: 14px;
     font-family: 'Montserrat', sans-serif,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;

@@ -18,16 +18,13 @@ export function Variacao(params){
     let dataArray = useRef([]);
     const count = useRef(0);
     const quantity = useRef(0);
+
     const { setVariationData, productOptions, productVariation } = params
 
     const [data, setData] = useState([]);
     const [options, setOptions] = useState([]);
     const [variation, setVariation] = useState();
-    const [hasOptions, setHasOptions] =  useState(true);
-
-    const handleClick = ()=>{
-        setHasOptions(!hasOptions)
-    }
+    const [hasOptions, setHasOptions] =  useState(false);
 
     const handleAddOption = ()=>{
         count.current = count.current + 1;
@@ -49,7 +46,7 @@ export function Variacao(params){
             </OptionsContainer>
             </div>
         ]       
-        setOptions([...options, newOption]);
+        options ? setOptions([...options, newOption]) : setOptions(newOption);
     }
 
     const handleDeleteOption = async  (e)=>{
@@ -79,7 +76,6 @@ export function Variacao(params){
     }
 
     const handleChangeOptions = (e)=>{
-        console.log("AQUII", dataArray.current)
         const pos = dataArray.current.map((e)=> e.id);
         const index = pos.indexOf(e.target.id);
         if(index === -1){
@@ -115,11 +111,11 @@ export function Variacao(params){
     },[data]);
 
     useEffect(()=>{
-        if(productOptions !== undefined){
+        if(productOptions !== null && productOptions !== undefined){
             const savedOptions = JSON.parse(JSON.parse(JSON.stringify(productOptions)));
             const higherId = savedOptions.reduce((p,c) =>{return (p.id > c.id) ? p : c})
-            count.current = parseInt(higherId.id.split('v')[1]);
-
+            count.current = higherId && parseInt(higherId.id.split('v')[1]);
+            setHasOptions(true)
             const datas = savedOptions.map((e)=>{
                 quantity.current = quantity.current + 1;
 
@@ -164,21 +160,23 @@ export function Variacao(params){
             setData(savedOptions)
             setOptions(datas)
             setVariationData(productData)
-
             setVariation({variation: productVariation});
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[productOptions])
-    
+    console.log(hasOptions)
     return(
         <div style={{width: "87.778vw"}}>
             <Text style={{marginBottom: "10px"}}>Variações</Text>
             {
                !hasOptions ? 
-                <AddContainer onClick={handleClick}>
-                    <AddOptionIconComponent width="8vw" height="8vw"/> 
-                    <Text style={{marginLeft: "10px"}}>Adicionar novo conjunto</Text>
-                </AddContainer>
+                <>
+                    <AddContainer onClick={()=>setHasOptions(true)}>
+                        <AddOptionIconComponent width="8vw" height="8vw"/> 
+                        <Text style={{marginLeft: "10px"}}>Adicionar novo conjunto</Text>
+                    </AddContainer>
+                    <InputLojaOn placeholder="Ex. 99" type="number" text="Quantidade" name="quantity" onChange={handleChangeVariation}/>
+                </>
                 :       
                 <div >
                     <TextOptions>Tipo de variação</TextOptions>

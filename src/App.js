@@ -1,6 +1,8 @@
 import './App.css';
 import Cookies from 'js-cookie';
 
+import { CartContextProvider } from "./hooks/CartContext";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { ThemeProvider } from 'styled-components';
@@ -28,21 +30,22 @@ function App() {
   return (
     <ThemeProvider theme={color}>
       <BrowserRouter>
-        <Routes>
-            {/* Lojista routes */}
-            <Route path="/login" element={<Login />}/>
-            <Route path="/cadastro" element={<CadastroUsuario />}/>
-            <Route path="/cadastrarloja" element={<CadastroLoja />}/>
-            <Route path="/produtos" element={<SeusProdutos/>}/>
-            <Route path="/adicionarproduto" element={<AdicionarProduto/>}/>
-            <Route path="/gerenciarproduto" element={<GerenciarProduto/>}/>
-            <Route path="/editarperfil" element={<Configuracoes/>}/>
-
-            {/* Cliente routes */}
-            <Route index element={<Home/>} />
-            <Route path="/produto" element={<Produto/>}/>
-
-        </Routes>
+        <CartContextProvider>
+          <Routes>
+              {/* Lojista routes */}
+              <Route path="/login" element={<Login />}/>
+              <Route path="/cadastro" element={<CadastroUsuario />}/>
+              <Route path="/cadastrarloja" element={<CadastroLoja />}/>
+              <Route path="/produtos" element={<SeusProdutos/>}/>
+              <Route path="/adicionarproduto" element={<AdicionarProduto/>}/>
+              <Route path="/gerenciarproduto" element={<GerenciarProduto/>}/>
+              <Route path="/editarperfil" element={<Configuracoes/>}/>
+              
+              {/* Cliente routes */}
+              <Route index element={<Home/>} />
+              <Route path="/produto" element={<Produto/>}/>
+          </Routes>
+        </CartContextProvider>
       </BrowserRouter>  
     </ThemeProvider>
   );

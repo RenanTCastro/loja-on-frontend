@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import ProductCard from "../../../components/ProductCard/ProductCard";
 import { Menu } from "../../../components";
+import ProductCard from "../../../components/ProductCard/ProductCard";
 
-import api from "../../../services/api";
 import auth from "../../../utils/auth";
+import api from "../../../services/api";
 
 import NoImage from "../../../assets/noImage.svg"
 

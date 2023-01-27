@@ -18,6 +18,7 @@ export default function ProductQuantityComponent(params){
     const actualValue = useRef(-1);
     const checkValue = useRef(false);
 
+    // eslint-disable-next-line no-unused-vars
     const [options, setOptions] = useState([]);
     const [quantity, setQuantity] = useState(1);
     const [optionsQuantity, setOptionsQuantity] = useState(1);
@@ -52,6 +53,7 @@ export default function ProductQuantityComponent(params){
     useEffect(()=>{
         setOptionsQuantity(quantityModal)
         setQuantityModal(quantityModal);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[quantityModal])
 
     const handleClick = (e)=>{

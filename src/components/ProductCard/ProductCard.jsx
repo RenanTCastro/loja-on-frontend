@@ -38,6 +38,7 @@ export default function ProductCard(params){
     const [options, setOptions] = useState([]);
     const isPromotionalProduct = params.promotion && params.promotion;
     const [quantityModal, setQuantityModal] = useState(1)
+    // eslint-disable-next-line no-unused-vars
     const { cartItems, setCartItems } = useCartContext();
     const [isModal, setIsModal] = useState(true);
 

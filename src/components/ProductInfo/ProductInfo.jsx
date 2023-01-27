@@ -27,7 +27,7 @@ export function ProductInfo(params){
     const [optionsQuantity, setOptionsQuantity] = useState(1);
     
     useEffect(()=>{
-        if(data.data){
+        if(data.data && data.variation){
             const optionsDataAux = JSON.parse(JSON.parse(JSON.stringify(data.data)));
             const optionsDataHTML = optionsDataAux.map((e,i)=>{
                 if(!e.quantity || e?.quantity === '0'){
@@ -45,6 +45,9 @@ export function ProductInfo(params){
             saveTotal = total;
             setOptionsQuantity(total)
             setOptions(optionsDataHTML);
+        }else{
+            saveTotal = data.quantity;
+            setOptionsQuantity(saveTotal)
         }
     },[data]);
 
@@ -91,12 +94,11 @@ export function ProductInfo(params){
                 <>
                     <TextOption>{data.variation}:</TextOption>
                     <DivProductOptions id="parent">{options}</DivProductOptions>
-                    <TextQuantity>{optionsQuantity} disponíveis</TextQuantity>
                 </>
                 :
                 <></>
             }
-
+            <TextQuantity>{optionsQuantity} disponíveis</TextQuantity>
             <DivProductAdd>
                 <DivProductQuantity>
                     <DivQuantity>{quantity}</DivQuantity>
@@ -105,7 +107,7 @@ export function ProductInfo(params){
                             if(data.variation){ 
                                 if(quantity < optionsQuantity)setQuantity(quantity+1);
                             }else{
-                                if(quantity < 999)setQuantity(quantity+1);
+                                if(quantity < data?.quantity)setQuantity(quantity+1);
                             }
                         }}>+</DivChangeQuantityText>
                         <DivChangeQuantityText onClick={()=>{if(quantity > 1)setQuantity(quantity-1);}}>-</DivChangeQuantityText>

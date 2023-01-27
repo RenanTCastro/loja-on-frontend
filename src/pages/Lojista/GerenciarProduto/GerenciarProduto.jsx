@@ -107,7 +107,7 @@ export default function GerenciarProduto(){
             <InputLojaOn placeholder="R$ 99,90" text="Preço" type="text" onKeyUp={handleKeyUp} name="price" value={productData?.price}/>
             <TextAreaLojaOn rows="5" placeholder="Fale sobre o seu produto..." text="Descrição do produto" onChange={handleInput} name="description" value={productData?.description}/>
             <InputLojaOn placeholder="Ex. 42FKJ4" text="Código do produto" onChange={handleInput} name="code" value={productData?.code}/>
-            <Variacao setVariationData={setVariationData} productOptions={productData?.data} productVariation={productData?.variation}/>
+            <Variacao setVariationData={setVariationData} productOptions={productData?.data} productVariation={productData?.variation} productQuantity={productData?.quantity}/>
 
             <ButtonContainer>
                 <ButtonLojaOn name="Salvar alterações" colorType="confirmar" onClick={handleSave}/>

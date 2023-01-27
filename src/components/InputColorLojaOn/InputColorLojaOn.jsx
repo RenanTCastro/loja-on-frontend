@@ -1,6 +1,7 @@
 import React from "react";
 
-import { 
+import {
+    InputName, 
     InputColor,
     ContainerInputColor
 } from "./styles";
@@ -8,14 +9,16 @@ import {
 export default function InputLojaOn(params){
 
     return(
-        <ContainerInputColor>
-            {params.text ? params.text : "Seleciona cor da sua loja" }
-            <InputColor 
-                type="color" 
-                name={params.name} 
-                value={params.text ? params.text: "#659BEE" }
-                onChange={params.onChange}
-            />
-        </ContainerInputColor>
+        <><InputName>{params.textInput}</InputName>
+    '        <ContainerInputColor>
+                {params.text ? params.text : "Seleciona cor da sua loja" }
+                <InputColor 
+                    type="color" 
+                    name={params.name} 
+                    value={params.text ? params.text: "#659BEE" }
+                    onChange={params.onChange}
+                />
+            </ContainerInputColor>'
+        </>
     );
 }

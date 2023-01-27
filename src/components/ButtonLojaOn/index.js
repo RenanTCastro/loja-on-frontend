@@ -1,1 +1,1 @@
-export { default as ButtonLojaOn } from "./ButtonLojaOn";
+export { ButtonLojaOn } from "./ButtonLojaOn";

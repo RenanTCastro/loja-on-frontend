@@ -48,3 +48,9 @@ export const InputColor = styled.input`
         border-radius: 0.366vw;
     }
 `;
+
+export const InputName = styled.p`
+    color: black;
+    font-size: 12px;
+    margin: 0 0 5px 3px;
+`;

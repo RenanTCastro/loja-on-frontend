@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-// import ImagemProduto from "../../../assets/ImagemProduto.png"
-import ImagemProduto from "../../../assets/m.png"
-
-import { Menu } from "../../../components";
+import { Menu, ProductInfo } from "../../../components";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 
 import api from "../../../services/api";
 import auth from "../../../utils/auth";
+
+import NoImage from "../../../assets/noImage.svg";
 
 import { 
     ProductContainer,
@@ -54,7 +53,7 @@ export default function Home(){
             <ProductInfoContainer>
                 <div>
                     <ProductName>{productData?.name}</ProductName>
-                    <ProductPrice>R$ {productData?.price}</ProductPrice>
+                    <ProductPrice>{productData?.price}</ProductPrice>
                     {window.screen.width >= 800 ? 
                         <>
                             <ProductDescription>{productData?.description}</ProductDescription> 
@@ -64,12 +63,13 @@ export default function Home(){
                         <></>
                     }
                 </div>
-                <ProductImage src={ImagemProduto}/>
+                <ProductImage src={productData?.image? productData?.image : NoImage}/>
             </ProductInfoContainer>
             
             {window.screen.width < 800 ?
                 <>
-                    <AddSacolaButton>Adicionar à sacola</AddSacolaButton>
+                    <ProductInfo data={productData}/>
+                    {/* <AddSacolaButton>Adicionar à sacola</AddSacolaButton> */}
                     <ProductDescription>{productData?.description}</ProductDescription>
                 </>
                 :

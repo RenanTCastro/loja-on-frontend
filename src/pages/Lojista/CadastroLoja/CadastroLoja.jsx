@@ -12,9 +12,14 @@ import {
     ButtonContainer,
 } from "./styles";
 
-import { ButtonLojaOn, InputLojaOn, TextAreaLojaOn } from "../../../components";
-import { LoadingAnimations } from "../../../components/LoadingAnimations";
-import { InputColorLojaOn } from "../../../components/InputColorLojaOn";
+import { 
+    ButtonLojaOn, 
+    InputLojaOn, 
+    InputColorLojaOn, 
+    LoadingAnimations, 
+    ErrorMessageInput,
+    TextAreaLojaOn 
+} from "../../../components";
 
 export default function CadastroLoja(){
     const [userData, setUserData] = useState({});

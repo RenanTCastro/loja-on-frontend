@@ -1,1 +1,1 @@
-export { default as InputLojaOn } from "./InputLojaOn";
+export { InputLojaOn } from "./InputLojaOn";

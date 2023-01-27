@@ -4,7 +4,7 @@ import {
     ButtonLO
 } from "./styles";
 
-export default function ButtonLojaOn(params){
+export function ButtonLojaOn(params){
     const {name, ...restParams} = params;
 
     return(

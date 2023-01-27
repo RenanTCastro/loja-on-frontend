@@ -1,11 +1,11 @@
 import styled from "styled-components/macro";
 
-export const TextAreaLO = styled.textarea`
+export const TextArea = styled.textarea`
     width: 85vw;
     border-radius: 1.389vw;
     border: 0.278vw solid ${props => props.theme.color};
     outline: none;
-    margin-bottom: 5.556vw;
+    margin-bottom: 10px;
     padding-left: 2.778vw;
     padding-top: 2.778vw;
     font-size: 3.889vw;
@@ -23,4 +23,10 @@ export const TextAreaLO = styled.textarea`
         padding-left: 1.098vw;
         padding-top: 1.098vw;
     }
+`;
+
+export const TextAreaName = styled.p`
+    color: black;
+    font-size: 14px;
+    margin: 0 0 5px 3px;
 `;

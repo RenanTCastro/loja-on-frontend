@@ -16,24 +16,30 @@ export const FotoProduto = styled.img`
 export const ProdutoInfo = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 `;
 
 export const ProdutoNome = styled.p`
-    font-size: 3.333vw;
-    color: #019392;
+    font-size: 10px;
     text-align: start;
     margin-left: 4.167vw;
     margin-top: 0;
+    margin-bottom: 0px;
 `;
 
 export const ProdutoPreco = styled.p`
     font-size: 3.333vw;
-    color: #019392;
     text-align: start;
     font-weight: 600;
     margin-left: 4.167vw;
     margin-bottom: 0;
+    margin-top: 3px;
+`;
+
+export const ProdutoVariacao = styled.p`
+    font-size: 10px;
+    text-align: start;
+    margin-left: 4.167vw;
+    margin-top: 0;
 `;
 
 export const IconeApagar = styled.img`

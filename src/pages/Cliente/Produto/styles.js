@@ -43,7 +43,7 @@ export const ProductPrice = styled.p`
 
 export const ProductImage = styled.img`
     width: 85vw;
-    height: 85vw;
+    height: auto;
     margin: 4.167vw 0 4.167vw 7.5vw;
     @media (min-width: 800px) {
         width: 39.288vw;
@@ -59,7 +59,8 @@ export const AddSacolaButton = styled.button`
     font-weight: 600;
     font-family: 'Montserrat', sans-serif,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;  text-align: center;
+        sans-serif;  
+    text-align: center;
     background: ${props => props.theme.color};
     color: white;
     border: none;

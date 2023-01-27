@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import { Menu } from "../../../components";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 
-import IconLoja from "../../../assets/lojaIcon.png"
-
-import api from "../../../services/api";
 import auth from "../../../utils/auth";
+import api from "../../../services/api";
+
+import NoImage from "../../../assets/noImage.svg"
 
 import { 
     HomeContainer,
@@ -49,7 +49,7 @@ export default function Home(){
         <HomeContainer>
             <Menu page="Cliente"/>
 
-            <LojaIcon src={userData.avatar_url}/>
+            <LojaIcon src={userData.avatar_url? userData.avatar_url : NoImage}/>
             <Bio>{userData?.bio}</Bio>
             <SearchInput placeholder="Pesquisar..." onChange={handleInput}/>
             <ProductsContainer>

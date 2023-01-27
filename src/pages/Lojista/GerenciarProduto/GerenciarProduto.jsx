@@ -2,21 +2,26 @@ import React, { useEffect, useState } from "react";
 
 import api from "../../../services/api";
 import auth from "../../../utils/auth";
+import upload from "../../../utils/upload";
 
-import Foto from "../../../assets/defaultProductImage.png"
-
-import { InputLojaOn, TextAreaLojaOn, ButtonLojaOn } from "../../../components/index";
+import { InputLojaOn, TextAreaLojaOn, ButtonLojaOn, Variacao } from "../../../components/index";
+import { LoadingAnimations } from "../../../components/LoadingAnimations";
 import {Menu} from "../../../components/index";
+
+import NoImage from "../../../assets/noImage.svg";
 
 import { 
     GerenciarProdutoContainer,
-    GerenciarProdutoTexto,
+    AlterarFoto,
     FotoProduto,
     ButtonContainer
 } from "./styles";
 
 export default function GerenciarProduto(){
     const [productData, setProductData] = useState({});
+    const [imgURL, setImgURL] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [variationData, setVariationData] = useState([]);
 
     let product_id = window.location.search.substring(1).split('&')[0].split('=')[1];
 
@@ -36,8 +41,21 @@ export default function GerenciarProduto(){
         setProductData({...productData, [e.target.name] : e.target.value});
     }
 
+    const handleKeyUp = (e)=>{
+        let value = e.currentTarget.value;
+        value = value.replace(/\D/g, "");
+        value = value.replace(/(\d)(\d{2})$/, "$1,$2");
+        value = value.replace(/(?=(\d{3})+(\D))\B/g, ".");
+        value = "R$ " + value;
+
+        e.currentTarget.value = value;
+        setProductData({...productData, [e.target.name] : value});
+        return e
+    }
+
     const handleSave = async()=>{
-        await api.put(`/editProduct/${product_id}`, {...productData, user_id: auth.get().user_id})
+        const data = [{...productData, ...variationData, user_id: auth.get().user_id}]
+        await api.put(`/editProduct/${product_id}`, data[0])
         .then((res)=>{
             window.location="/produtos";
         })
@@ -56,18 +74,40 @@ export default function GerenciarProduto(){
         });
     }
 
+    const handleUpload = async(e)=>{
+        setIsLoading(true);
+        const url = await upload(e)
+        setImgURL(url);
+        setProductData({...productData, "image" : url});
+        setIsLoading(false);    
+    } 
+
+    const handleChange = async()=>{
+        document.getElementById("changeImage").click();
+    } 
+
     return(
         <GerenciarProdutoContainer>
             <Menu page="Configurações" text="Editar Produto"/>
-            <FotoProduto src={Foto}/>
-            <GerenciarProdutoTexto>
-                Definir foto do produto
-            </GerenciarProdutoTexto>
+
+            {isLoading ? 
+                <LoadingAnimations/> : 
+                <FotoProduto 
+                    src={productData?.image? imgURL? imgURL : productData?.image : NoImage}/> 
+            }
+
+            <AlterarFoto>
+                <form onSubmit={handleUpload} id="form1"/>
+                Alterar foto do produto
+                <input type="file" style={{display: "none"}} form="form1" onChange={handleChange}/>
+                <button type="submit" form="form1" id="changeImage" style={{display: "none"}}/>
+            </AlterarFoto>
             
-            <InputLojaOn placeholder="Nome do produto" onChange={handleInput} name="name" value={productData?.name}/>
-            <InputLojaOn placeholder="Preço" type="number" onChange={handleInput} name="price" value={productData?.price}/>
-            <TextAreaLojaOn rows="5" placeholder="Descrição do produto" onChange={handleInput} name="description" value={productData?.description}/>
-            <InputLojaOn placeholder="Código do produto" onChange={handleInput} name="code" value={productData?.code}/>
+            <InputLojaOn placeholder="Ex. Camisa básica preta" text="Nome do produto" onChange={handleInput} name="name" value={productData?.name}/>
+            <InputLojaOn placeholder="R$ 99,90" text="Preço" type="text" onKeyUp={handleKeyUp} name="price" value={productData?.price}/>
+            <TextAreaLojaOn rows="5" placeholder="Fale sobre o seu produto..." text="Descrição do produto" onChange={handleInput} name="description" value={productData?.description}/>
+            <InputLojaOn placeholder="Ex. 42FKJ4" text="Código do produto" onChange={handleInput} name="code" value={productData?.code}/>
+            <Variacao setVariationData={setVariationData} productOptions={productData?.data} productVariation={productData?.variation} productQuantity={productData?.quantity}/>
 
             <ButtonContainer>
                 <ButtonLojaOn name="Salvar alterações" colorType="confirmar" onClick={handleSave}/>
